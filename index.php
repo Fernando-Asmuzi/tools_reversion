@@ -90,7 +90,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
               <input type="radio" class="form-check-input" id="radio10" name="radio" value="radio10"><b>Cambios a Realizar</b>
             </div>
           </div>
-          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
+          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('radios')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
         </form>
       </div>
 
