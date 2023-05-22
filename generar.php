@@ -547,7 +547,7 @@ if (!empty($proyecto)) {
         for ($counter = 0; $counter < $campos; $counter++) {
             $row = $resultado->fetch(PDO::FETCH_ASSOC);
             array_push($array_campos, $row['columna']);
-        }
+        } 
         $devu .= "var ta = ta + '<tr><td>'+x." . $array_campos[0] . "+'</td><td>'+x." . $array_campos[1] . "+'</td><td>'+x." . $array_campos[2] . "+'</td><td>'+x." . $array_campos[3] . "+'</td>'" . '+elec1+elec2+' . "'</tr>'" . "\r";
         $devu .= '}' . "\r";
         $devu .= 'document.getElementById("contenido").innerHTML = ta;' . "\r\r";

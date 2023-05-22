@@ -48,6 +48,9 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <div class="col-sm-12 col-md-12">
             <input type="text" name="base" class="form-control fondo2 form-control-sm mb-1" placeholder="Base de Datos" required>
           </div>
+          <div class="col-sm-12 col-md-12">
+            <input type="text" name="pass" class="form-control fondo2 form-control-sm mb-1" placeholder="Contraseña" required>
+          </div>
           <!-- Input Hidden Requerimiento para Update -->
           <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
           <div class="col-sm-12 col-md-12 mt-2">
@@ -94,9 +97,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
       <!-- Columna de la Derecha -->
       <div class="col-sm-12 col-md-10 text-success letra-media" id="denueve">
         <div id="text1">
-
-          <!-- <b id="spiner">Generando Proyecto...</b> -->
-
           <div id="spiner">
             <div class="d-flex justify-content-center">
               <div class="spinner-border" role="status">
@@ -104,25 +104,19 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <p class="centro">Generando el proyecto. Espere...</p>
           </div>
-
         </div>
         <br>
         <div><a title="Arriba" href="#top"><i class="bi bi-arrow-up-square letra-grande"></i></a></div>
       </div>
-
     </div>
-
   </div>
-
   <?php
   include 'footer.php';
   ?>
 
   <script>
     $(document).ready(function() {
-
       $('#spiner').hide();
-
       $('#pruebas').submit(function(event) {
         event.preventDefault();
         $.ajax({
@@ -132,7 +126,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           success: function(data) {
             //Cuando la interacción sea exitosa, se ejecutará esto.
             document.getElementById("text1").innerText = data;
-
           },
           // error: function(data){
           // 	//Cuando la interacción retorne un error, se ejecutará esto.

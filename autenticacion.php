@@ -18,7 +18,7 @@
   if($registros != 0){
     $resul_array = [];
     while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-     array_push($resul_array, $row);
+      array_push($resul_array, $row);
     }
     echo json_encode($resul_array);
     exit();
