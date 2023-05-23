@@ -70,7 +70,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <!-- </div> -->
           <!-- <hr> -->
           <br>
-          <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100"><i class="bi bi-code-square"></i><b> GENERAR CODIGO COMPLETO</b></button>
+          <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO COMPLETO</b></button>
         </form>
 
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
@@ -90,7 +90,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
               <input type="radio" class="form-check-input" id="radio10" name="radio" value="radio10"><b>Cambios a Realizar</b>
             </div>
           </div>
-          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('radios')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
+          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
         </form>
       </div>
 
@@ -118,6 +118,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
     $(document).ready(function() {
       $('#spiner').hide();
       $('#pruebas').submit(function(event) {
+        $('#spiner').show();
         event.preventDefault();
         $.ajax({
           type: 'POST',
@@ -135,6 +136,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
       });
 
       $('#radios').submit(function(event) {
+        $('#spiner').show();
         event.preventDefault();
         $.ajax({
           type: 'POST',
