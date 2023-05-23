@@ -11,7 +11,7 @@ $array_proyec = explode("-", $contents);
 $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
-
+ 
 
 if (!empty($proyecto)) {
 
