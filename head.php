@@ -15,8 +15,19 @@
   <link href="assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <!-- Incluir Iconos de Bootstrap -->
   <link rel="stylesheet" href="assets/bootstrap-icons/font/bootstrap-icons.css">
-  <!-- Incluir Estilos Personalizados -->  
+  <!-- Incluir Estilos Personalizados -->
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
   <!-- Titulo de la Pagina -->
   <title>Herramientas de Desarrollo</title>
 </head>
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
+<nav class="navbar navbar-expand-sm bg-danger navbar-light navbar-fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <!-- <div class="rounded-pill"><i class="bi bi-tools"></i></div> -->
+        <img src="assets/img/logo.png" alt="Avatar Logo">
+        <a class="navbar-brand letra-normal" href="#" style="color: #f8f9fa;">HERRAMIENTA PARA DESARROLLO WEB</a>
+      </a>
+    </div>
+</nav>
