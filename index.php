@@ -55,7 +55,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         </div>
         <hr>
 
-       <form method="POST" name="pruebas" id="pruebas" action="generar.php">
+      <form method="POST" name="pruebas" id="pruebas" action="generar.php">
             <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
             <div class="col-sm-12 col-md-12 letra-media">
               <div class="form-check mt-2 color11">
@@ -65,14 +65,14 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
                 <input type="radio" class="form-check-input " id="radio2" name="radio" value="radio2">Formulario ABM
               </div>
               <div class="form-check color11">
-                <input type="radio" class="form-check-input" id="radio5" name="radio" value="radio5">Formulario para
+                <input type="radio" class="form-check-input" id="radio3" name="radio" value="radio3">Formulario para
                 Buscar
               </div>
               <div class="form-check color11">
-                <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">CRUD para Tabla
+                <input type="radio" class="form-check-input" id="radio4" name="radio" value="radio4">CRUD para Tabla
               </div>
               <div class="form-check color11">
-                <input type="radio" class="form-check-input" id="radio9" name="radio" value="radio9">Archivo JavaScript
+                <input type="radio" class="form-check-input" id="radio5" name="radio" value="radio5">Archivo JavaScript
               </div>
             </div>
             <br>
@@ -84,17 +84,17 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
             <div class="form-check color5">
-              <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Input Hidden
+              <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
             </div>
             <div class="form-check color5">
-              <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Select Option
+              <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
             </div>
             <div class="form-check color5">
-              <input type="radio" class="form-check-input" id="radio11" name="radio" value="radio11">Radio Option
+              <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
             </div>
             <hr>
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio10" name="radio" value="radio10"><b>Cambios a Realizar</b>
+              <input type="radio" class="form-check-input" id="radio9" name="radio" value="radio"><b>Cambios a Realizar</b>
             </div>
           </div>
           <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>

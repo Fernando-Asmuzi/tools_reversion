@@ -6,21 +6,21 @@ fclose($file_handle);
 
 $array_proyec = explode("-", $contents);
 
-//print_r($array_proyec);
 
 $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
- 
+
+//Cantidad de campos para el search
+$camposSearch = 4;
 
 if (!empty($proyecto)) {
 
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));
 
-    // $proyec = $_COOKIE['proyec'];
-    // $base = $_COOKIE['base'];
-
+    
+    //----------  Definición de parámetros de conexión ----------//
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', 'admin123');
@@ -40,11 +40,13 @@ if (!empty($proyecto)) {
     $campos = $resultado->rowCount();
     $resultado->execute();
 
+
+    //----- Crea el directorio en caso de que no exista ------//
     if (!file_exists($carpeta)) {
         mkdir($carpeta, 0777, true);
     }
 
-    //----- Archivo Index -----//
+    //----- Creación Archivo Index -----//
     if ($_POST['radio'] == 'radio1') {
         $devu .= '';
         $devu .= "<!-- INDEX --> \r";
@@ -83,6 +85,8 @@ if (!empty($proyecto)) {
         <script src='" . strtolower($tabla) . ".js' type='text/javascript' ></script>
         </body>
         </html>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/index.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
@@ -91,7 +95,8 @@ if (!empty($proyecto)) {
         echo $devu;
     }
 
-    //----- Archivo para Insert -----//
+    //--------------- Generación de ABM para la tabla seleccionada ---------------//
+    //----- Creación Archivo para Insert -----//
     if ($_POST['radio'] == 'radio2') {
         $devu = '';
         $devu .= "<!-- INSERT --> \r";
@@ -156,15 +161,18 @@ if (!empty($proyecto)) {
         <!-- Fin del Formulario -->
         <!-- Fin del Card -->
         </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/add.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-        //}
-        //----- Archivo para Edit -----//
-        //if ($_POST['radio'] == 'radio3') {
+        
+
+        //----- Creación Archivo para Edit -----//
+        $resultado->execute();
         $devu = '';
         $devu .= "<!-- EDIT --> \r";
         $devu .= "<!-- Nombre del archivo ( edit.php ) -->\r";
@@ -228,15 +236,17 @@ if (!empty($proyecto)) {
         <!-- Fin del Formulario " . ucfirst($tabla) . " -->
         <!-- Fin del Card -->
         </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/edit.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-        //}
-        //----- Archivo para Delete -----//
-        //if ($_POST['radio'] == 'radio4') {
+        
+        //----- Creación Archivo para Delete -----//
+        $resultado->execute();
         $devu = '';
         $devu .= "<!-- DELETE --> \r";
         $devu .= "<!-- Nombre del archivo ( delete.php ) -->\r";
@@ -302,6 +312,8 @@ if (!empty($proyecto)) {
         <!-- Fin del Formulario " . ucfirst($tabla) . " -->
         <!-- Fin del Card -->
         </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/delete.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
@@ -310,8 +322,8 @@ if (!empty($proyecto)) {
         echo $devu;
     }
 
-    //----- Archivo para Search -----//
-    if ($_POST['radio'] == 'radio5') {
+    //---------------- Archivo para Search -----------------//
+    if ($_POST['radio'] == 'radio3') {
         $devu = '';
         $devu .= "<!-- SEARCH --> \r";
         $devu .= "<!-- Nombre del archivo ( search.php ) -->\r";
@@ -332,16 +344,24 @@ if (!empty($proyecto)) {
         </form>
         </div>
         </div>
-        <!-- Comienzo de la Grid Datatable -->
-        <table class='table table-bordered table-hover table-condensed letra-normal' id='".strtolower($tabla)."'>
+        <!-- Comienzo de la Grid Datatable --> \r";
+        $devu .= "<table class='table table-bordered table-hover table-condensed letra-normal' id='".strtolower($tabla)."'>
         <thead>
-        <tr class='fondo5 color1'>
-            <th scope='col' class='ancho5'>#</th>
-            <th scope='col' class='ancho15'>Codigo</th>
-            <th scope='col' class='ancho50'>Nombre</th>
-            <th scope='col' class='ancho20'>Stock</th>
-            <th scope='col' class='ancho5'></th>
-            <th scope='col' class='ancho5'></th>
+        <tr class='fondo5 color1'> \r";
+
+        //------------------ Generador de campos para cabecera de la tabla -------------------------//
+        for ($counter = 0; $counter < $camposSearch; $counter++) {
+            $row = $resultado->fetch(PDO::FETCH_ASSOC); 
+            if ($row['columna'] == 'id') {
+                $devu .= "<th scope='col' class='ancho10'>Código</th> \r";
+            } else {
+                $devu .= " <th scope='col' class='ancho25'>" . ucfirst($row['columna']) . "</th> \r";
+            }
+        }
+        
+        $devu .= "
+        <th scope='col' class='ancho5'></th>
+        <th scope='col' class='ancho5'></th>
         </tr>
         </thead>
         <tbody id='contenido'>
@@ -354,6 +374,8 @@ if (!empty($proyecto)) {
         <div class='color9 negrita letra-media' id='alerta' style='display: none;'></div>
         <!-- Fin del Card del Data Table-->
         </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/search.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
@@ -362,8 +384,8 @@ if (!empty($proyecto)) {
         echo $devu;
     }
 
-    //----- Archivo para CRUD -----//
-    if ($_POST['radio'] == 'radio6') {
+    //--------------------- Archivo para CRUD ----------------------//
+    if ($_POST['radio'] == 'radio4') {
         $devu = '';
         $devu .= "// CRUD // \r";
         $devu .= "// Nombre del archivo ( " . strtolower($tabla) . ".php ) \r";
@@ -529,6 +551,8 @@ if (!empty($proyecto)) {
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/" . strtolower($tabla) . ".php", "w+b");
         fwrite($archivo, '<?php' . "\r");
         fwrite($archivo, $devu);
@@ -538,8 +562,9 @@ if (!empty($proyecto)) {
         // Muestro el codigo
         echo $devu;
     }
-    //----- Rutina JavaScript -----//
-    if ($_POST['radio'] == 'radio9') {
+
+    //------------------------ Rutina JavaScript -----------------------------//
+    if ($_POST['radio'] == 'radio5') {
         $devu .= '// -------------------- Rutinas Codigo JavaScript -------------------- //' . "\r";
         $devu .= '// -------------------- Funcion Tablita -------------------- //' . "\r";
         $devu .= '// Carga en una tabla los resultado y agrega botones editar y eliminar' . "\r";
@@ -831,6 +856,8 @@ if (!empty($proyecto)) {
         $devu .= '// Fin de busqueda de la tabla' . "\r";
         $devu .= '// Fin de cuando el documento esta cargado' . "\r";
         $devu .= '});' . "\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/" . strtolower($tabla) . ".js", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
