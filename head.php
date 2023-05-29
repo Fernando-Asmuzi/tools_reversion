@@ -20,14 +20,3 @@
   <!-- Titulo de la Pagina -->
   <title>Herramientas de Desarrollo</title>
 </head>
-
-<!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
-<nav class="navbar navbar-expand-sm bg-danger navbar-light navbar-fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <!-- <div class="rounded-pill"><i class="bi bi-tools"></i></div> -->
-        <img src="assets/img/logo.png" alt="Avatar Logo">
-        <a class="navbar-brand letra-normal" href="#" style="color: #f8f9fa;">HERRAMIENTA PARA DESARROLLO WEB</a>
-      </a>
-    </div>
-</nav>

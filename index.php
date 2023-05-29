@@ -8,6 +8,18 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
 
 ?>
 
+
+  <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
+<nav class="navbar navbar-expand-sm bg-danger navbar-light navbar-fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <!-- <div class="rounded-pill"><i class="bi bi-tools"></i></div> -->
+        <img src="assets/img/logo.png" alt="Avatar Logo">
+        <a class="navbar-brand letra-normal" href="#" style="color: #f8f9fa;">HERRAMIENTA PARA DESARROLLO WEB</a>
+      </a>
+    </div>
+</nav>
+
 <body id="top">
   <!-- Contenedor principal del Archivo -->
   <div class="col-12 col-centrada container" style="max-width: 98% !important;">
@@ -49,12 +61,10 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           </div>
           <hr>
         </form>
-
         <div class="col-12 borde-derecho">
           <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton9 color7 bg-success btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class=""></i><b> LIMPIAR CODIGO </b></button>
         </div>
         <hr>
-
       <form method="POST" name="pruebas" id="pruebas" action="generar.php">
             <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
             <div class="col-sm-12 col-md-12 letra-media">
@@ -79,7 +89,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn boton10 mb-2 letra-media w-100"><i
                 class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
           </form>
-
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
@@ -100,7 +109,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
         </form>
       </div>
-
       <!-- Columna de la Derecha -->
       <div class="col-sm-12 col-md-10 text-success letra-media" id="denueve">
         <div id="text1">
@@ -120,7 +128,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
   <?php
   include 'footer.php';
   ?>
-
   <script>
     $(document).ready(function() {
       $('#spiner').hide();
@@ -141,7 +148,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
       $('#radios').submit(function(event) {
         $('#spiner').show();
         event.preventDefault();
@@ -159,8 +165,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
-
       $('#proyecto').submit(function(event) {
         $('#spiner').show();
         event.preventDefault();
@@ -170,10 +174,8 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           data: $(this).serialize(),
           success: function(data) {
             //Cuando la interacción sea exitosa, se ejecutará esto.
-
             $('#spiner').hide();
             document.getElementById("text1").innerText = data;
-
           },
           // error: function(data){
           // 	//Cuando la interacción retorne un error, se ejecutará esto.
@@ -181,10 +183,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
     });
   </script>
-
 </body>
-
 </html>

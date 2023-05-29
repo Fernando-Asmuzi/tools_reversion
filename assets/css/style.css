@@ -1,3 +1,8 @@
+/* Formulario de login */
+.login-form{
+  
+}
+
 /* Sombra */
 .caja1{
   box-shadow: 0px 0px 2px 1px grey;
@@ -147,7 +152,6 @@ nav.navbar {
 .ancho50{
   width: 50% ;
 }
-
 .ancho90{
   width: 90% ;
 }
@@ -155,7 +159,6 @@ nav.navbar {
   width: 100%;
   height: auto;
 }
-
 .paracard{
   width: 99% ;
   margin-top: 5px;
