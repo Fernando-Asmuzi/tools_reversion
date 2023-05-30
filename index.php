@@ -51,7 +51,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             <input type="text" name="base" class="form-control fondo3 form-control-sm mb-1" placeholder="Base de Datos" required>
           </div>
           <div class="col-sm-12 col-md-12">
-            <input type="text" name="pass" class="form-control fondo2 form-control-sm mb-1" placeholder="Contraseña" required>
+            <input type="text" name="pass" class="form-control fondo3 form-control-sm mb-1" placeholder="Contraseña" required>
           </div>
           <!-- Input Hidden Requerimiento para Update -->
           <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
@@ -86,7 +86,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio11" name="radio" value="radio11">Radio Option
-=======
       <form method="POST" name="pruebas" id="pruebas" action="generar.php">
             <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
             <div class="col-sm-12 col-md-12 letra-media">
@@ -97,8 +96,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
                 <input type="radio" class="form-check-input " id="radio2" name="radio" value="radio2">Formulario ABM
               </div>
               <div class="form-check color11">
-                <input type="radio" class="form-check-input" id="radio3" name="radio" value="radio3">Formulario para
-                Buscar
+                <input type="radio" class="form-check-input" id="radio3" name="radio" value="radio3">Formulario para Buscar
               </div>
               <div class="form-check color11">
                 <input type="radio" class="form-check-input" id="radio4" name="radio" value="radio4">CRUD para Tabla
@@ -114,15 +112,14 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
             </div>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
             </div>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
             </div>
             <hr>
             <div class="form-check">

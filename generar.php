@@ -271,7 +271,7 @@ if (!empty($proyecto)) {
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
-=======
+
         // For que Arma los Input del Formulario
         for ($counter = 0; $counter < $campos; $counter++) {
             $row = $resultado->fetch(PDO::FETCH_ASSOC);
@@ -294,7 +294,7 @@ if (!empty($proyecto)) {
                 $devu .= "<textarea id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
             } elseif ($row['tipo'] == 'tinyint') {
                 $devu .= "<input type='checkbox' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
+            
             }
             $devu .= "</div>\r";
             $devu .= "</div>\r";
@@ -420,7 +420,7 @@ if (!empty($proyecto)) {
         $devu .=
         "<!-- Titulo Data Table-->
         <div class='row text-center'>
-<<<<<<< HEAD
+
             <div class='col-sm-7 col-md-9'>
                 <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo2' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
@@ -984,4 +984,5 @@ if (!empty($proyecto)) {
 
 } else {
     echo 'No se ha creado el proyecto';
+}
 }
