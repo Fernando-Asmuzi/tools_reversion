@@ -6,7 +6,6 @@ fclose($file_handle);
 
 $array_proyec = explode("-", $contents);
 
-
 $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
@@ -15,11 +14,10 @@ $base = $array_proyec[2];
 $camposSearch = 4;
 
 if (!empty($proyecto)) {
-
+    
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));
 
-    
     //----------  Definición de parámetros de conexión ----------//
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
