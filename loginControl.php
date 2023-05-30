@@ -1,7 +1,6 @@
 <?php
     include('conexion/conexion.php');
     session_start();
-    echo 'hola';
     // Código para registro de nuevo usuario REVISAR BIEN LAS VARIABLES
     /*
     if (isset($_POST['register'])) {
@@ -42,14 +41,13 @@
             echo 'NO';
         } else {
             echo 'SI';
-            //if (password_verify($password, $result['PASSWORD'])) {
-              
-              //  $_SESSION['id'] = $result['ID'];
-               // header('Location: http://localhost/tools_reversion/tools_reversion/index.php');
-                //die();
-            //} else {
-             //   echo '<p class="error">La contraseña es incorrecta</p>';
-            //}
+            // if (password_verify($password, $result['PASSWORD'])) {
+            //  $_SESSION['id'] = $result['ID'];
+            // header('Location: http://localhost/tools_reversion/tools_reversion/index.php');
+            // die();
+            // } else {
+            //   echo '<p class="error">La contraseña es incorrecta</p>';
+            // }
         }
     }
 ?>

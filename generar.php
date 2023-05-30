@@ -14,7 +14,7 @@ $base = $array_proyec[2];
 //Cantidad de campos para el search
 $camposSearch = 4;
 
-if (!empty($proyecto)) {
+if (!empty($proyecto)){
 
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));
@@ -217,7 +217,6 @@ if (!empty($proyecto)) {
         </form>
         <!-- Fin del Formulario -->
         <!-- Fin del Card -->
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
         </div>\r";
 
         //-------- Escritura del archivo -------//
@@ -253,7 +252,7 @@ if (!empty($proyecto)) {
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
                 $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color5'></i></span>\r";
-                if ($row['tipo'] == 'int') {
+                if ($row['tipo'] == 'int'){
                     $devu .= "<input type='number' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
                 } elseif ($row['tipo'] == 'varchar') {
                     $devu .= "<input type='text' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
@@ -271,9 +270,8 @@ if (!empty($proyecto)) {
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
-=======
         // For que Arma los Input del Formulario
-        for ($counter = 0; $counter < $campos; $counter++) {
+        for ($counter = 0; $counter < $campos; $counter++){
             $row = $resultado->fetch(PDO::FETCH_ASSOC);
             $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
             $devu .= "<div class='row text-center'>\r";
@@ -294,7 +292,6 @@ if (!empty($proyecto)) {
                 $devu .= "<textarea id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
             } elseif ($row['tipo'] == 'tinyint') {
                 $devu .= "<input type='checkbox' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
             }
             $devu .= "</div>\r";
             $devu .= "</div>\r";
@@ -420,7 +417,6 @@ if (!empty($proyecto)) {
         $devu .=
         "<!-- Titulo Data Table-->
         <div class='row text-center'>
-<<<<<<< HEAD
             <div class='col-sm-7 col-md-9'>
                 <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo2' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
@@ -447,42 +443,6 @@ if (!empty($proyecto)) {
             <tbody id='contenido'>
                 <!-- Aqui va el contenido de la Tabla -->
             </tbody>
-=======
-        <div class='col-sm-7 col-md-9'>
-        <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 fondo7' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
-        </div>
-        <div class='col-sm-5 mb-2 col-md-3'>
-        <form class='d-flex w-100' method='POST' id='formbuscar' action='".strtolower($tabla).".php' style='float: right;' >
-        <input class='form-control me-2 alto1' type='search' id='buscar' name='buscar' placeholder='Ingrese su busqueda...' aria-label='Buscar'>
-        <!-- Input Hidden requerimiento -->
-        <input type='hidden' id='requerimiento' name ='requerimiento' value='select'/>
-        </form>
-        </div>
-        </div>
-        <!-- Comienzo de la Grid Datatable --> \r";
-        $devu .= "<table class='table table-bordered table-hover table-condensed letra-normal' id='".strtolower($tabla)."'>
-        <thead>
-        <tr class='fondo5 color1'> \r";
-
-        //------------------ Generador de campos para cabecera de la tabla -------------------------//
-        for ($counter = 0; $counter < $camposSearch; $counter++) {
-            $row = $resultado->fetch(PDO::FETCH_ASSOC); 
-            if ($row['columna'] == 'id') {
-                $devu .= "<th scope='col' class='ancho10'>Código</th> \r";
-            } else {
-                $devu .= " <th scope='col' class='ancho25'>" . ucfirst($row['columna']) . "</th> \r";
-            }
-        }
-        
-        $devu .= "
-        <th scope='col' class='ancho5'></th>
-        <th scope='col' class='ancho5'></th>
-        </tr>
-        </thead>
-        <tbody id='contenido'>
-        <!-- Aqui va el contenido de la Tabla -->
-        </tbody>
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
         </table>
         <!-- Fin de la Tabla Data Table -->
         <!-- Cartel de Anuncios ó Spinner -->

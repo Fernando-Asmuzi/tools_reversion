@@ -65,7 +65,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton9 color7 bg-success btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class=""></i><b> LIMPIAR CODIGO </b></button>
         </div>
         <hr>
-
         <form method="POST" name="pruebas" id="pruebas" action="generar.php">
           <!-- <div class="col-sm-12 col-md-12"> -->
           <input type="text" name="tabla" class="form-control fondo3 form-control-sm mb-1 W-100" placeholder="Tabla">
@@ -74,7 +73,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <br>
           <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100"><i class="bi bi-code-square"></i><b> GENERAR CODIGO COMPLETO</b></button>
         </form>
-
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
@@ -86,7 +84,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio11" name="radio" value="radio11">Radio Option
-=======
       <form method="POST" name="pruebas" id="pruebas" action="generar.php">
             <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
             <div class="col-sm-12 col-md-12 letra-media">
@@ -122,7 +119,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <div class="form-check color5">
               <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
             </div>
             <hr>
             <div class="form-check">
