@@ -15,7 +15,7 @@
   <link href="assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <!-- Incluir Iconos de Bootstrap -->
   <link rel="stylesheet" href="assets/bootstrap-icons/font/bootstrap-icons.css">
-  <!-- Incluir Estilos Personalizados -->  
+  <!-- Incluir Estilos Personalizados -->
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
   <!-- Titulo de la Pagina -->
   <title>Herramientas de Desarrollo</title>

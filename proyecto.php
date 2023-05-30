@@ -4,13 +4,15 @@ $raiz0 = $_SERVER['DOCUMENT_ROOT'];
 $proyecto = $_POST['proyecto'];
 $base = $_POST['base'];
 $tabla = $_POST['tabla'];
+$pass = $_POST['pass'];
 $proyecto0 = $raiz0 . '/' . $proyecto;
 
 $temporal = fopen("tmp.txt", "w");
-
+ 
 fwrite($temporal, $proyecto0.'-');
 fwrite($temporal, $proyecto.'-');
-fwrite($temporal, $base);
+fwrite($temporal, $base.'-');
+fwrite($temporal, $pass);
 fflush($temporal);
 fclose($temporal);
 
@@ -48,7 +50,7 @@ if (!file_exists($proyecto0)) {
     $devu .= "// Archivo de Conexion a la Base " . ucfirst($base) . " \r";
     $devu .= "define('DB_SERVER', 'localhost');\r";
     $devu .= "define('DB_USERNAME', 'root');\r";
-    $devu .= "define('DB_PASSWORD', 'Aqui va la contraseña');\r";
+    $devu .= "define('DB_PASSWORD', '" . $pass . "');\r";
     $devu .= "define('DB_NAME', '" . strtolower($base) . "');\r";
     $devu .= "try{\r";
     $devu .= '$conexion = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);' . "\r";

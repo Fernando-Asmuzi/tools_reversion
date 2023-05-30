@@ -8,9 +8,9 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
 
 ?>
 
-<body id="top">
+
   <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
-  <nav class="navbar navbar-expand-sm bg-danger navbar-light navbar-fixed-top">
+<nav class="navbar navbar-expand-sm bg-danger navbar-light navbar-fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <!-- <div class="rounded-pill"><i class="bi bi-tools"></i></div> -->
@@ -18,7 +18,9 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         <a class="navbar-brand letra-normal" href="#" style="color: #f8f9fa;">HERRAMIENTA PARA DESARROLLO WEB</a>
       </a>
     </div>
-  </nav>
+</nav>
+
+<body id="top">
   <!-- Contenedor principal del Archivo -->
   <div class="col-12 col-centrada container" style="max-width: 98% !important;">
     <!-- Linea Nº 1 -->
@@ -48,6 +50,9 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           <div class="col-sm-12 col-md-12">
             <input type="text" name="base" class="form-control fondo3 form-control-sm mb-1" placeholder="Base de Datos" required>
           </div>
+          <div class="col-sm-12 col-md-12">
+            <input type="text" name="pass" class="form-control fondo2 form-control-sm mb-1" placeholder="Contraseña" required>
+          </div>
           <!-- Input Hidden Requerimiento para Update -->
           <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
           <div class="col-sm-12 col-md-12 mt-2">
@@ -56,11 +61,11 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           </div>
           <hr>
         </form>
-
         <div class="col-12 borde-derecho">
-          <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton9 color7 bg-success btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-table"></i><b> LIMPIAR </b></button>
+          <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton9 color7 bg-success btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class=""></i><b> LIMPIAR CODIGO </b></button>
         </div>
         <hr>
+
         <form method="POST" name="pruebas" id="pruebas" action="generar.php">
           <!-- <div class="col-sm-12 col-md-12"> -->
           <input type="text" name="tabla" class="form-control fondo3 form-control-sm mb-1 W-100" placeholder="Tabla">
@@ -81,22 +86,55 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio11" name="radio" value="radio11">Radio Option
+=======
+      <form method="POST" name="pruebas" id="pruebas" action="generar.php">
+            <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
+            <div class="col-sm-12 col-md-12 letra-media">
+              <div class="form-check mt-2 color11">
+                <input type="radio" class="form-check-input" id="radio1" name="radio" value="radio1" checked>Archivo Index
+              </div>
+              <div class="form-check color11">
+                <input type="radio" class="form-check-input " id="radio2" name="radio" value="radio2">Formulario ABM
+              </div>
+              <div class="form-check color11">
+                <input type="radio" class="form-check-input" id="radio3" name="radio" value="radio3">Formulario para
+                Buscar
+              </div>
+              <div class="form-check color11">
+                <input type="radio" class="form-check-input" id="radio4" name="radio" value="radio4">CRUD para Tabla
+              </div>
+              <div class="form-check color11">
+                <input type="radio" class="form-check-input" id="radio5" name="radio" value="radio5">Archivo JavaScript
+              </div>
+            </div>
+            <br>
+            <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn boton10 mb-2 letra-media w-100"><i
+                class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
+          </form>
+        <form method="POST" name="radios" id="radios" action="generarRadio.php">
+          <div class="col-sm-12 col-md-12 letra-media">
+            <hr>
+            <div class="form-check color5">
+              <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
+            </div>
+            <div class="form-check color5">
+              <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
+            </div>
+            <div class="form-check color5">
+              <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
+>>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
             </div>
             <hr>
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio10" name="radio" value="radio10"><b>Cambios a Realizar</b>
+              <input type="radio" class="form-check-input" id="radio9" name="radio" value="radio"><b>Cambios a Realizar</b>
             </div>
           </div>
-          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
+          <button title="Generar Codigo" id="botonradio" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
         </form>
       </div>
-
       <!-- Columna de la Derecha -->
       <div class="col-sm-12 col-md-10 text-success letra-media" id="denueve">
         <div id="text1">
-
-          <!-- <b id="spiner">Generando Proyecto...</b> -->
-
           <div id="spiner">
             <div class="d-flex justify-content-center">
               <div class="spinner-border" role="status">
@@ -104,26 +142,20 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             </div>
             <p class="centro">Generando el proyecto. Espere...</p>
           </div>
-
         </div>
         <br>
         <div><a title="Arriba" href="#top"><i class="bi bi-arrow-up-square letra-grande"></i></a></div>
       </div>
-
     </div>
-
   </div>
-
   <?php
   include 'footer.php';
   ?>
-
   <script>
     $(document).ready(function() {
-
       $('#spiner').hide();
-
       $('#pruebas').submit(function(event) {
+        $('#spiner').show();
         event.preventDefault();
         $.ajax({
           type: 'POST',
@@ -132,7 +164,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           success: function(data) {
             //Cuando la interacción sea exitosa, se ejecutará esto.
             document.getElementById("text1").innerText = data;
-
           },
           // error: function(data){
           // 	//Cuando la interacción retorne un error, se ejecutará esto.
@@ -140,8 +171,8 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
       $('#radios').submit(function(event) {
+        $('#spiner').show();
         event.preventDefault();
         $.ajax({
           type: 'POST',
@@ -157,8 +188,6 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
-
       $('#proyecto').submit(function(event) {
         $('#spiner').show();
         event.preventDefault();
@@ -168,10 +197,8 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           data: $(this).serialize(),
           success: function(data) {
             //Cuando la interacción sea exitosa, se ejecutará esto.
-
             $('#spiner').hide();
             document.getElementById("text1").innerText = data;
-
           },
           // error: function(data){
           // 	//Cuando la interacción retorne un error, se ejecutará esto.
@@ -179,10 +206,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
           // }
         })
       });
-
     });
   </script>
-
 </body>
-
 </html>

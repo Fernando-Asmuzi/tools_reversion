@@ -38,7 +38,7 @@ if (!empty($proyecto)) {
         mkdir($carpeta, 0777, true);
     }
     //----- Input Hidden -----//
-    if ($_POST['radio'] == 'radio7') {
+    if ($_POST['radio'] == 'radio6') {
         $devu = '';
         // For que Arma los Input Hidden
         $devu .= "<!-- Input de Campos Hidden -->\r";
@@ -75,7 +75,7 @@ if (!empty($proyecto)) {
         echo $devu;
     }
     //----- Select Option -----//
-    if ($_POST['radio'] == 'radio8') {
+    if ($_POST['radio'] == 'radio7') {
         $devu .= '<!-- Select Option -->' . "\r";
         $devu .= '<!-- Para archivo add.php -->' . "\r";
         $devu .= "<div class='row text-center'>" . "\r";
@@ -120,7 +120,7 @@ if (!empty($proyecto)) {
         echo $devu2;
     }
     //----- Rutina Cambios a Realizar -----//
-    if ($_POST['radio'] == 'radio10') {
+    if ($_POST['radio'] == 'radio9') {
         $devu = '';
         $devu .= '// Cambios a Realizar antes de usar el Proyecto' . "\r\r";
         $devu .= '// 1) Archivo conexion.php' . "\r";

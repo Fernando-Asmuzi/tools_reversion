@@ -6,22 +6,26 @@ fclose($file_handle);
 
 $array_proyec = explode("-", $contents);
 
-//print_r($array_proyec);
 
 $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
 
+//Cantidad de campos para el search
+$camposSearch = 4;
 
 if (!empty($proyecto)) {
+
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));
-    // $proyec = $_COOKIE['proyec'];
-    // $base = $_COOKIE['base'];
+
+    
+    //----------  Definición de parámetros de conexión ----------//
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', 'admin123');
     define('DB_NAME', $base);
+
     try {
         $conexion = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
         $conexion->exec("set names utf8");
@@ -29,16 +33,21 @@ if (!empty($proyecto)) {
     } catch (PDOException $e) {
         die("ERROR: No se pudo conectar. " . $e->getMessage());
     }
+
     //----- Consulta de la Estructura de la Tabla pasada como Paramentro -----//
     $consulta = "SELECT COLUMN_NAME AS columna, ORDINAL_POSITION AS posicion, DATA_TYPE AS tipo FROM information_schema.columns WHERE table_schema = '" . $base . "' AND table_name = '" . $tabla . "' ORDER BY ORDINAL_POSITION";
     $resultado = $conexion->query($consulta);
     $campos = $resultado->rowCount();
     $resultado->execute();
+
+
+    //----- Crea el directorio en caso de que no exista ------//
     if (!file_exists($carpeta)) {
         mkdir($carpeta, 0777, true);
     }
-    //----- Archivo Index -----//
-    //if ($_POST['radio'] == 'radio1') {
+
+    //----- Creación Archivo Index -----//
+    if ($_POST['radio'] == 'radio1') {
         $devu .= '';
         $devu .= "<!-- INDEX --> \r";
         $devu .= "<!-- Nombre del archivo ( index.php ) -->\r";
@@ -47,44 +56,48 @@ if (!empty($proyecto)) {
         <!DOCTYPE html>
         <html lang='es'>
         <?php include '../head.php'; ?>
-            <body>
-                <div style='display: block;' id='agregar'>
-                    <?php include 'add.php'; ?>
-                </div>
-                <div style='display: none;' id='modificar'>
-                    <?php include 'edit.php'; ?>
-                </div>
-                <div style='display: none;' id='eliminar'>
-                    <?php include 'delete.php'; ?>
-                </div>
-                <div style='display: block;' id='buscar1'>
-                    <?php include 'search.php'; ?>
-                </div>
-                <!-- ----- Rutina de Tostada de Avisos ----- -->
-                <!-- Cartel de Anuncios Verde, Azul o Rojo -->
-                <div class='position-fixed bottom-0 end-0 p-3' style='z-index: 11'>
-                    <div id='toast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='5000'>
-                        <div class='toast-header fondo9 color5' id='toas0'>
-                            <i class='bi bi-exclamation-circle'></i>&nbsp;
-                            <strong class='me-auto' id='toas1'>-</strong>
-                            <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
-                        </div>
-                        <div class='toast-body color5' id='toas2'>-</div>
-                    </div>
-                </div>
-                    <?php include '../footer.php'; ?>
-                    <script src='" . strtolower($tabla) . ".js' type='text/javascript' ></script>
-            </body>
+        <body>
+        <div style='display: block;' id='agregar'>
+        <?php include 'add.php'; ?>
+        </div>
+        <div style='display: none;' id='modificar'>
+        <?php include 'edit.php'; ?>
+        </div>
+        <div style='display: none;' id='eliminar'>
+        <?php include 'delete.php'; ?>
+        </div>
+        <div style='display: block;' id='buscar1'>
+        <?php include 'search.php'; ?>
+        </div>
+        <!-- ----- Rutina de Tostada de Avisos ----- -->
+        <!-- Cartel de Anuncios Verde, Azul o Rojo -->
+        <div class='position-fixed bottom-0 end-0 p-3' style='z-index: 11'>
+        <div id='toast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='5000'>
+        <div class='toast-header fondo9 color5' id='toas0'>
+            <i class='bi bi-exclamation-circle'></i>&nbsp;
+            <strong class='me-auto' id='toas1'>-</strong>
+            <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+        </div>
+        <div class='toast-body color5' id='toas2'>-</div>
+        </div>
+        </div>
+        <?php include '../footer.php'; ?>
+        <script src='" . strtolower($tabla) . ".js' type='text/javascript' ></script>
+        </body>
         </html>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/index.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-    //}
-    //----- Archivo para Insert -----//
-    //if ($_POST['radio'] == 'radio2') {
+    }
+
+    //--------------- Generación de ABM para la tabla seleccionada ---------------//
+    //----- Creación Archivo para Insert -----//
+    if ($_POST['radio'] == 'radio2') {
         $devu = '';
         $devu .= "<!-- INSERT --> \r";
         $devu .= "<!-- Nombre del archivo ( add.php ) -->\r";
@@ -92,6 +105,7 @@ if (!empty($proyecto)) {
         $devu .= "<!-- Comienzo del Card -->\r";
         $devu .=
         "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='agregar'>
+
             <div class='row text-center'>
                 <div class='col-12'>
                     <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
@@ -147,30 +161,90 @@ if (!empty($proyecto)) {
             </form>
             <!-- Fin del Formulario -->
             <!-- Fin del Card -->
+=======
+        <div class='row text-center'>
+        <div class='col-12'>
+        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
+        </div>
+        </div> \r\r";
+        $devu .= "<!-- Comienzo del formulario para insert tabla " . ucfirst($tabla) . " -->\r";
+        $devu .= "<form method='POST' id='" . strtolower($tabla) . "_i' action='" . strtolower($tabla) . ".php'>\r\r";
+        // For que Arma los Input del Formulario
+        for ($counter = 0; $counter < $campos; $counter++) {
+            $row = $resultado->fetch(PDO::FETCH_ASSOC);
+            $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
+            $devu .= "<div class='row text-center'>\r";
+            $devu .= "<div class='col-md-12'>\r";
+            $devu .= "<div class='input-group input-group mb-2'>\r";
+            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color10'></i></span>\r";
+            if ($row['tipo'] == 'int') {
+                $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'varchar') {
+                $devu .= "<input type='text' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'decimal') {
+                $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "_i' value='' />\r";
+            } elseif ($row['tipo'] == 'date') {
+                $devu .= "<input type='date' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'datetime') {
+                $devu .= "<input type='datetime' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'text') {
+                $devu .= "<textarea id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='Escriba aqui...' value='' ></textarea>\r";
+            } elseif ($row['tipo'] == 'tinyint') {
+                $devu .= "<input type='checkbox' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' value='0'/> " . ucwords($row['columna']) . "\r";
+            }
+            $devu .= "</div>\r";
+            $devu .= "</div>\r";
+            $devu .= "</div>\r";
+        }
+        $devu .= "\r";
+        $devu .=
+        "<!-- Input Hidden Requerimiento para Insert -->
+        <input type='hidden' id='requerimiento' name ='requerimiento' value='insert'/>\r\r";
+        $devu .=
+        "<!-- Linea divisora entre ingresos y botones -->
+        <div class='row text-center'>
+        <div class='col-md-12'>
+        <hr>
+        </div>
+        </div>\r\r";
+        $devu .=
+        "<!-- Boton Guardar -->
+        <div class='row'>
+        <div class='col-12 derecha'>
+        <button type='submit' id='guardar_i' class='btn boton1 color7 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+        </div>
+        </div>
+        </form>
+        <!-- Fin del Formulario -->
+        <!-- Fin del Card -->
+>>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
         </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/add.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
-     // Muestro el codigo
+        // Muestro el codigo
         echo $devu;
-    //}
-    //----- Archivo para Edit -----//
-    //if ($_POST['radio'] == 'radio3') {
+        
+
+        //----- Creación Archivo para Edit -----//
+        $resultado->execute();
         $devu = '';
         $devu .= "<!-- EDIT --> \r";
         $devu .= "<!-- Nombre del archivo ( edit.php ) -->\r";
         $devu .= "<!-- Rutina de modificacion de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card -->\r";
-        $devu .= 
-    "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='modificar'>
+        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='modificar'>
         <div class='row text-center'>
-            <div class='col-12'>
-                <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
-            </div>
+        <div class='col-12'>
+        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
+        </div>
         </div>
         <!-- Comienzo del Formulario para Update " . ucfirst($tabla) . " -->
         <form method='POST' id='" . strtolower($tabla) . "_u' action='" . strtolower($tabla) . ".php'>\r\r";
+
             // For que Arma los Input del Formulario
             for ($counter = 0; $counter < $campos; $counter++) {
                 $row = $resultado->fetch(PDO::FETCH_ASSOC);
@@ -197,39 +271,69 @@ if (!empty($proyecto)) {
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
+=======
+        // For que Arma los Input del Formulario
+        for ($counter = 0; $counter < $campos; $counter++) {
+            $row = $resultado->fetch(PDO::FETCH_ASSOC);
+            $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
+            $devu .= "<div class='row text-center'>\r";
+            $devu .= "<div class='col-md-12'>\r";
+            $devu .= "<div class='input-group input-group mb-2'>\r";
+            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color3'></i></span>\r";
+            if ($row['tipo'] == 'int') {
+                $devu .= "<input type='number' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'varchar') {
+                $devu .= "<input type='text' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'decimal') {
+                $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'date') {
+                $devu .= "<input type='date' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'datetime') {
+                $devu .= "<input type='datetime' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            } elseif ($row['tipo'] == 'text') {
+                $devu .= "<textarea id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
+            } elseif ($row['tipo'] == 'tinyint') {
+                $devu .= "<input type='checkbox' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
+>>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
             }
-            $devu .= "\r";
-            $devu .=
-            "<!-- Input Hidden Requerimiento para Update -->
-            <input type='hidden' id='requerimiento' name ='requerimiento' value='update'/>\r\r";
-            $devu .=
-            "<!-- Linea divisora entre ingresos y botones -->
-            <div class='row text-center'>
-                <div class='col-md-12'>
-                    <hr>
-                </div>
-            </div>\r\r";
-            $devu .=
-            "<!-- Boton Modificar -->
-            <div class='row'>
-                <div class='col-12 derecha'>
-                    <button type='reset' id='cancelar_u' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-                    <button type='submit' id='guardar_u' class='btn boton3 color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
-                </div>
-            </div>
+            $devu .= "</div>\r";
+            $devu .= "</div>\r";
+            $devu .= "</div>\r";
+        }
+        $devu .= "\r";
+        $devu .=
+        "<!-- Input Hidden Requerimiento para Update -->
+        <input type='hidden' id='requerimiento' name ='requerimiento' value='update'/>\r\r";
+        $devu .=
+        "<!-- Linea divisora entre ingresos y botones -->
+        <div class='row text-center'>
+        <div class='col-md-12'>
+        <hr>
+        </div>
+        </div>\r\r";
+        $devu .=
+        "<!-- Boton Modificar -->
+        <div class='row'>
+        <div class='col-12 derecha'>
+        <button type='reset' id='cancelar_u' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
+        <button type='submit' id='guardar_u' class='btn boton3 color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
+        </div>
+        </div>
         </form>
         <!-- Fin del Formulario " . ucfirst($tabla) . " -->
         <!-- Fin del Card -->
-    </div>\r";
+        </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/edit.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-    //}
-    //----- Archivo para Delete -----//
-    //if ($_POST['radio'] == 'radio4') {
+        
+        //----- Creación Archivo para Delete -----//
+        $resultado->execute();
         $devu = '';
         $devu .= "<!-- DELETE --> \r";
         $devu .= "<!-- Nombre del archivo ( delete.php ) -->\r";
@@ -237,14 +341,14 @@ if (!empty($proyecto)) {
         $devu .= "<!-- Comienzo del Card -->\r";
         $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='eliminar'>\r";
         $devu .= "
-    <div class='row text-center'>
+        <div class='row text-center'>
         <div class='col-12'>
-            <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
+        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
         </div>
-    </div>\r";
+        </div>\r";
         $devu .= "
-    <!-- Comienzo del Formulario para Delete " . ucfirst($tabla) . " -->
-    <form method='POST' id='" . strtolower($tabla) . "_d' action='" . strtolower($tabla) . ".php'>\r\r";
+        <!-- Comienzo del Formulario para Delete " . ucfirst($tabla) . " -->
+        <form method='POST' id='" . strtolower($tabla) . "_d' action='" . strtolower($tabla) . ".php'>\r\r";
         // For que Arma los Input del Formulario
         for ($counter = 0; $counter < $campos; $counter++) {
             $row = $resultado->fetch(PDO::FETCH_ASSOC);
@@ -279,41 +383,44 @@ if (!empty($proyecto)) {
         $devu .=
         "<!-- Linea divisora entre ingresos y botones -->
         <div class='row text-center'>
-            <div class='col-md-12'>
-                <hr>
-            </div>
+        <div class='col-md-12'>
+        <hr>
+        </div>
         </div>\r\r";
         $devu .=
         "<!-- Boton Eliminar -->
         <div class='row'>
-            <div class='col-12 derecha'>
-                <button  type='reset' id='cancelar_d' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-                <button type='submit' id='guardar_d' class='btn boton2 color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
-            </div>
+        <div class='col-12 derecha'>
+        <button  type='reset' id='cancelar_d' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
+        <button type='submit' id='guardar_d' class='btn boton2 color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
         </div>
-    </form>
-    <!-- Fin del Formulario " . ucfirst($tabla) . " -->
-    <!-- Fin del Card -->
-    </div>\r";
+        </div>
+        </form>
+        <!-- Fin del Formulario " . ucfirst($tabla) . " -->
+        <!-- Fin del Card -->
+        </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/delete.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-    //}
-    //----- Archivo para Search -----//
-    //if ($_POST['radio'] == 'radio5') {
+    }
+
+    //---------------- Archivo para Search -----------------//
+    if ($_POST['radio'] == 'radio3') {
         $devu = '';
         $devu .= "<!-- SEARCH --> \r";
         $devu .= "<!-- Nombre del archivo ( search.php ) -->\r";
         $devu .= "<!-- Rutina de buscar de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card del DataTable -->\r";
-        $devu .= 
-    "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='search'>\r\r";
+        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='search'>\r\r";
         $devu .=
-            "<!-- Titulo Data Table-->
+        "<!-- Titulo Data Table-->
         <div class='row text-center'>
+<<<<<<< HEAD
             <div class='col-sm-7 col-md-9'>
                 <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo2' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
@@ -340,22 +447,61 @@ if (!empty($proyecto)) {
             <tbody id='contenido'>
                 <!-- Aqui va el contenido de la Tabla -->
             </tbody>
+=======
+        <div class='col-sm-7 col-md-9'>
+        <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 fondo7' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
+        </div>
+        <div class='col-sm-5 mb-2 col-md-3'>
+        <form class='d-flex w-100' method='POST' id='formbuscar' action='".strtolower($tabla).".php' style='float: right;' >
+        <input class='form-control me-2 alto1' type='search' id='buscar' name='buscar' placeholder='Ingrese su busqueda...' aria-label='Buscar'>
+        <!-- Input Hidden requerimiento -->
+        <input type='hidden' id='requerimiento' name ='requerimiento' value='select'/>
+        </form>
+        </div>
+        </div>
+        <!-- Comienzo de la Grid Datatable --> \r";
+        $devu .= "<table class='table table-bordered table-hover table-condensed letra-normal' id='".strtolower($tabla)."'>
+        <thead>
+        <tr class='fondo5 color1'> \r";
+
+        //------------------ Generador de campos para cabecera de la tabla -------------------------//
+        for ($counter = 0; $counter < $camposSearch; $counter++) {
+            $row = $resultado->fetch(PDO::FETCH_ASSOC); 
+            if ($row['columna'] == 'id') {
+                $devu .= "<th scope='col' class='ancho10'>Código</th> \r";
+            } else {
+                $devu .= " <th scope='col' class='ancho25'>" . ucfirst($row['columna']) . "</th> \r";
+            }
+        }
+        
+        $devu .= "
+        <th scope='col' class='ancho5'></th>
+        <th scope='col' class='ancho5'></th>
+        </tr>
+        </thead>
+        <tbody id='contenido'>
+        <!-- Aqui va el contenido de la Tabla -->
+        </tbody>
+>>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
         </table>
         <!-- Fin de la Tabla Data Table -->
         <!-- Cartel de Anuncios ó Spinner -->
         <div class='color2 negrita letra-media' id='cartelito' style='display: block;'>Ingrese su busqueda...</div>
         <div class='color2 negrita letra-media' id='alerta' style='display: none;'></div>
         <!-- Fin del Card del Data Table-->
-    </div>\r";
+        </div>\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/search.php", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-    //} 
-    //----- Archivo para CRUD -----//
-    //if ($_POST['radio'] == 'radio6') {
+    }
+
+    //--------------------- Archivo para CRUD ----------------------//
+    if ($_POST['radio'] == 'radio4') {
         $devu = '';
         $devu .= "// CRUD // \r";
         $devu .= "// Nombre del archivo ( " . strtolower($tabla) . ".php ) \r";
@@ -505,11 +651,11 @@ if (!empty($proyecto)) {
         $devu .= '// -------------------------------------------------------------------------------- //' . "\r";
         $devu .= '// Codigo que Genera la Rutina para Select Option' . "\r";
         $devu .= 'if($requerimiento == "option"){' . "\r";
-        $devu .= '$tabla_option = $_POST[' . "'tabla_option'" . '];' . "\r";
-        $devu .= '$campo_option = $_POST[' . "'campo_option'" . '];' . "\r";
+        $devu .= '$tabla_option = $_POST['."'tabla_option'".'];'. "\r";
+        $devu .= '$campo_option = $_POST['."'campo_option'".'];'. "\r";    
         $devu .= '// Consulta del campo especifico para armar el select option' . "\r";
         $devu .= '// El ejemplo esta echo con la tabla area pero se puede cambiar por cualquier otra' . "\r";
-        $devu .= '$consulta = "SELECT DISTINCT(id), "' . '.$campo_option.' . '" FROM "' . '.$tabla_option.' . '" ORDER BY "' . '.$campo_option' . ';' . "\r";
+        $devu .= '$consulta = "SELECT DISTINCT(id), "'.'.$campo_option.'.'" FROM "'.'.$tabla_option.'.'" ORDER BY "'.'.$campo_option'.';' . "\r";
         // $devu .= '$consulta = "SELECT DISTINCT(id), .'.$campo_option.'. FROM .'.$tabla_option.'. ORDER BY .'.$campo_option.'";' . "\r";
         $devu .= '$resultado = $conexion->query($consulta);' . "\r";
         $devu .= '$registros = $resultado->rowCount();' . "\r";
@@ -517,10 +663,12 @@ if (!empty($proyecto)) {
         $devu .= 'if($registros > 0){' . "\r";
         $devu .= 'echo ' . "'<option value=" . '"0">' . "</option>';" . "\r";
         $devu .= 'while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {' . "\r";
-        $devu .= 'echo ' . "'<option value=" . '"' . "'" . '.$' . 'row["id"]' . ".'" . '">' . "'" . '.$' . 'row[' . '$campo_option' . '].' . "'</option>'" . ";\r";
+        $devu .= 'echo ' . "'<option value=" . '"' . "'" . '.$' . 'row["id"]' . ".'" . '">' . "'" . '.$' . 'row['.'$campo_option'.'].' . "'</option>'" . ";\r";
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/" . strtolower($tabla) . ".php", "w+b");
         fwrite($archivo, '<?php' . "\r");
         fwrite($archivo, $devu);
@@ -529,10 +677,10 @@ if (!empty($proyecto)) {
         fclose($archivo);
         // Muestro el codigo
         echo $devu;
-    //} 
-    //----- Rutina JavaScript -----//
-    //if ($_POST['radio'] == 'radio9') {
-        $devu = '';
+    }
+
+    //------------------------ Rutina JavaScript -----------------------------//
+    if ($_POST['radio'] == 'radio5') {
         $devu .= '// -------------------- Rutinas Codigo JavaScript -------------------- //' . "\r";
         $devu .= '// -------------------- Funcion Tablita -------------------- //' . "\r";
         $devu .= '// Carga en una tabla los resultado y agrega botones editar y eliminar' . "\r";
@@ -611,7 +759,7 @@ if (!empty($proyecto)) {
         $devu .= '}' . "\r";
         $devu .= '});' . "\r";
         $devu .= '}' . "\r";
-        $devu .= '}' . "\r";
+        $devu .= '}' . "\r";        
         // Funcion que activa las tostadas
         $devu .= '// -------------------- Funcion Tostada -------------------- //' . "\r";
         $devu .= '// Muestra los avisos de Correcto, Aviso, Alerta y Error esquina inferior derecha' . "\r";
@@ -639,11 +787,12 @@ if (!empty($proyecto)) {
         }
         $devu .= 'return a;' . "\r";
         $devu .= '}' . "\r";
+
         $devu .= '// -------------------- Funcion Combito -------------------- //' . "\r";
         $devu .= '// Carga un select option con datos de la tabla elegida' . "\r";
         $devu .= 'function combito(queselector,valor,t_option,c_option){' . "\r";
         $devu .= '//Carga el Select Option de la Tabla' . "\r";
-        $devu .= '$.post("' . strtolower($tabla) . '.php", { requerimiento : ' . "'option', campo_option : c_option, tabla_option : t_option}, function(data){" . "\r";
+        $devu .= '$.post("'.strtolower($tabla).'.php", { requerimiento : ' . "'option', campo_option : c_option, tabla_option : t_option}, function(data){" . "\r";
         $devu .= '$(queselector).html(data);' . "\r";
         $devu .= '$(queselector).val(valor);' . "\r";
         $devu .= '});' . "\r";
@@ -697,8 +846,8 @@ if (!empty($proyecto)) {
         $devu .= '// Ajax de Consulta ' . "\r";
         $devu .= '$.ajax({' . "\r";
         $devu .= "type: 'POST'," . "\r";
-        $devu .= "url: $('#" . strtolower($tabla) . "_i').attr('action')," . "\r";
-        $devu .= "data: $('#" . strtolower($tabla) . "_i').serialize()," . "\r";
+        $devu .= "url: $('#".strtolower($tabla)."_i').attr('action')," . "\r";
+        $devu .= "data: $('#".strtolower($tabla)."_i').serialize()," . "\r";
         $devu .= 'success: function(data) {' . "\r";
         $devu .= 'if(data == "NO1"){' . "\r";
         $devu .= '// Cuando no se pudo guardar.' . "\r";
@@ -710,7 +859,7 @@ if (!empty($proyecto)) {
         $devu .= 'document.getElementById("contenido").innerHTML = "";' . "\r";
         $devu .= '}else{' . "\r";
         $devu .= '// Cuando se guardo con exito. ' . "\r";
-        $devu .= 'document.getElementById("' . strtolower($tabla) . '_i").reset();' . "\r";
+        $devu .= 'document.getElementById("'.strtolower($tabla).'_i").reset();' . "\r";
         $devu .= "tostada('toast-header fondo-verde','CORRECTO','Se guardo con exito.');" . "\r";
         $devu .= 'tablita(data)' . "\r";
         $devu .= '}' . "\r";
@@ -724,8 +873,8 @@ if (!empty($proyecto)) {
         $devu .= 'event.preventDefault();' . "\r";
         $devu .= '$.ajax({' . "\r";
         $devu .= "type: 'POST'," . "\r";
-        $devu .= "url: $('#" . strtolower($tabla) . "_u').attr('action')," . "\r";
-        $devu .= "data: $('#" . strtolower($tabla) . "_u').serialize()," . "\r";
+        $devu .= "url: $('#".strtolower($tabla)."_u').attr('action')," . "\r";
+        $devu .= "data: $('#".strtolower($tabla)."_u').serialize()," . "\r";
         $devu .= 'success: function(data) {' . "\r";
         $devu .= 'if(data == "NO1"){' . "\r";
         $devu .= '// Cuando no se pudo guardar.' . "\r";
@@ -747,8 +896,8 @@ if (!empty($proyecto)) {
         $devu .= 'event.preventDefault();' . "\r";
         $devu .= '$.ajax({' . "\r";
         $devu .= "type: 'POST'," . "\r";
-        $devu .= "url: $('#" . strtolower($tabla) . "_d').attr('action')," . "\r";
-        $devu .= "data: $('#" . strtolower($tabla) . "_d').serialize()," . "\r";
+        $devu .= "url: $('#".strtolower($tabla)."_d').attr('action')," . "\r";
+        $devu .= "data: $('#".strtolower($tabla)."_d').serialize()," . "\r";
         $devu .= 'success: function(data) {' . "\r";
         $devu .= 'if(data == "NO"){' . "\r";
         $devu .= '// Cuando no se pudo eliminar.' . "\r";
@@ -823,13 +972,16 @@ if (!empty($proyecto)) {
         $devu .= '// Fin de busqueda de la tabla' . "\r";
         $devu .= '// Fin de cuando el documento esta cargado' . "\r";
         $devu .= '});' . "\r";
+
+        //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/" . strtolower($tabla) . ".js", "w+b");
         fwrite($archivo, $devu);
         fflush($archivo);
         fclose($archivo);
         $devu .= "\r";
         echo $devu;
-    //}  
+    }
+
 } else {
     echo 'No se ha creado el proyecto';
 }
