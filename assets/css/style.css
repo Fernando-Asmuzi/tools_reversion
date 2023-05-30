@@ -1,11 +1,50 @@
-/* Sombra */
-.caja1{
-  box-shadow: 0px 0px 2px 1px grey;
-}
-/* Color de fondo de toda la pagina */
+/* Colores usados en la pagina*/
+.fondo1 {background-color: #F3525A;}
+.fondo2 {background-color: #1c3157;}
+.fondo3 {background-color: #0c090e2c;}
+.fondo4 {background-color: #ebf1f0;}
+.fondo5 {background-color: #e69890;}
+
+
+.color1 {color: #4c545c;}
+.color2 {color: #F3525A;}
+.color3 {color: white;}
+.color4 {color: #EC7063;}
+.color5 {color: #48C9B0;}
+.color6 {color: #0c090e2c;}
+.color7 {color: white;}
+.color9 {color: #1c3157;}
+
+
+
+.fondo-rojo {background-color: #e69890;}
+.fondo-verde {background-color: #a9e0d988;}
+.fondo-azul {background-color: #A9CCE3;}
+
+
 body {
   background-color: #f7f7f5;
 }
+
+.boton1 {background-color: #F3525A;}
+.boton2 {background-color: #EC7063 ;}
+.boton3 {background-color: #48C9B0;}
+
+
+/*//////////////////////////////////////////////////////*/
+
+/*Sombras*/
+
+.caja1{
+  box-shadow: 0px 0px 2px 1px grey;
+}
+
+
+
+/*//////////////////////////////////////////////////////*/
+
+/* Tamaño de fuentes*/
+
 /* Letra a 10px */
 .letra-chica{
   font-size: 10px;
@@ -22,15 +61,11 @@ body {
 .letra-grande{
   font-size: 16px;
 }
-/* Letra en Negrita */
-.negrita{
-  font-weight: bold;
-}
-/* Letra en Normal */
-.normal{
-font-weight: normal;
-}
-/* Alto1 */
+
+/*//////////////////////////////////////////////////////*/
+
+/* Alto */
+
 .alto1{
   height: 40px;
 }
@@ -43,86 +78,10 @@ font-weight: normal;
 .alto4{
   height: 38px;
 }
-/* Alinear texto a la centro */
-.centro{
-  text-align: center;
-}
-/* Alinear texto a la derecha */
-.derecha{
-  text-align: right;
-}
-/* Alinear texto a la izquierda */
-.izquierda{
-  text-align: left;
-}
-/* Tamaño de la letra del placeholder */
-::placeholder {
-  font-size: 14px;
-}
-/* Cambiar el color de fondo a la barra */
-nav.navbar {
-  background-color: #45B39D;
-}
-.sombra-azul {
-  text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
-  color: white;
-  font: 1em Georgia, "Bitstream Charter", "URW Bookman L", "Century Schoolbook L", serif;
-}
-.borde-derecho { border-right: 1px solid rgb(172, 169, 169); }
+/*//////////////////////////////////////////////////////*/
 
-.color1 {color: #4c545c;}
-.color2 {color: #EC7063;}
-.color3 {color: #48C9B0;}
-.color4 {color: #A2D9CE;}
-.color5 {color: #01080c;}
-.color6 {color: #EDBB99;}
-.color7 {color: white;}
-.color8 {color: rgb(43, 78, 173);}
-.color9 {color: rgb(173, 43, 43);}
-.color10 {color: #5499C7;}
-.color11 {color: #D35400;}
+/*Ancho*/
 
-
-.boton1 {background-color: #5499C7;}
-.boton2 {background-color: #EC7063 ;}
-.boton3 {background-color: #48C9B0;}
-.boton4 {background-color: #A2D9CE; color: black;}
-.boton5 {background-color: #F7DC6F;}
-.boton6 {background-color: #EDBB99;}
-.boton7 {background-color: #8E44AD;}
-.boton8 {background-color: #C39BD3;}
-.boton9 {background-color: #D35400;}
-.boton10 {background-color: #E67E22;}
-.boton11 {background-color: #1c3157;}
-
-.fondo1 {background-color: #D98880;}
-.fondo2 {background-color: #0c090e2c;}
-.fondo3 {background-color: #A9CCE3;}
-.fondo4 {background-color: #ebf1f0;}
-.fondo5 {background-color: #d6f1ec;}
-.fondo6 {background-color: #0c0b0b65;}
-.fondo7 {background-color: #aaa8a888;}
-.fondo8 {background-color: #e69890;}
-.fondo9 {background-color: #a9e0d988;}
-.fondo10 {background-color: #F9EBEA;}
-.fondo11 {background-color: #E8DAEF;}
-.fondo12 {background-color: #F6DDCC;}
-
-
-.fondo-rojo {background-color: #e69890;}
-.fondo-verde {background-color: #a9e0d988;}
-.fondo-azul {background-color: #A9CCE3;}
-
-.portada{
-  background: url(assets/img/fondo.jpg) no-repeat fixed center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: auto;
-  width: 100% ;
-  text-align: center;
-}
 .ancho5{
   width: 5% ;
 }
@@ -151,10 +110,45 @@ nav.navbar {
 .ancho90{
   width: 90% ;
 }
+/*//////////////////////////////////////////////////////*/
+
+/*Alineacion del texto*/
+
+/* Alinear texto a la centro */
+.centro{
+  text-align: center;
+}
+/* Alinear texto a la derecha */
+.derecha{
+  text-align: right;
+}
+/* Alinear texto a la izquierda */
+.izquierda{
+  text-align: left;
+}
+/*//////////////////////////////////////////////////////*/
+
+/*Tipos de fuentes*/
+
+/* Letra en Negrita */
+.negrita{
+  font-weight: bold;
+}
+/* Letra en Normal */
+.normal{
+font-weight: normal;
+}
+/*//////////////////////////////////////////////////////*/
+
+/*Responsi*/
+
 .responsive {
   width: 100%;
   height: auto;
 }
+/*//////////////////////////////////////////////////////*/
+
+.borde-derecho { border-right: 1px solid rgb(172, 169, 169); }
 
 .paracard{
   width: 99% ;

@@ -26,7 +26,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
     <div class="row">
       <!-- Columna de la Izquierda -->
       <div class="col-sm-12 col-md-2 borde-derecho">
-        <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton7 color7 bg-danger btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-menu-button-wide-fill"></i><b> PROYECTO - BASE
+        <button title="Limpiar Campos" type="button" class="btn letra-media btn-sm boton9 color7 bg-danger btn-sm w-100" onclick="limpiar_formulario('pruebas')"><i class="bi bi-menu-button-wide-fill"></i><b> PROYECTO - BASE
             DATOS</b></button>
         <hr>
       </div>
@@ -43,15 +43,15 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
       <div class="col-sm-12 col-md-2 borde-derecho">
         <form method="POST" name="proyecto" id="proyecto" action="proyecto.php">
           <div class="col-sm-12 col-md-12">
-            <input type="text" name="proyecto" class="form-control fondo2 form-control-sm mb-1" placeholder="Carpeta Proyecto" required>
+            <input type="text" name="proyecto" class="form-control fondo3 form-control-sm mb-1" placeholder="Carpeta Proyecto" required>
           </div>
           <div class="col-sm-12 col-md-12">
-            <input type="text" name="base" class="form-control fondo2 form-control-sm mb-1" placeholder="Base de Datos" required>
+            <input type="text" name="base" class="form-control fondo3 form-control-sm mb-1" placeholder="Base de Datos" required>
           </div>
           <!-- Input Hidden Requerimiento para Update -->
           <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
           <div class="col-sm-12 col-md-12 mt-2">
-            <button title="Generar Proyecto" type="submit" name="submit" class="btn mb-2 btn-sm letra-media boton8 color7 bg-primary btn-sm w-100"><i class="bi bi-menu-button-wide-fill"></i><b>
+            <button title="Generar Proyecto" type="submit" name="submit" class="btn mb-2 btn-sm letra-media boton9 color7 bg-primary btn-sm w-100"><i class="bi bi-menu-button-wide-fill"></i><b>
                 GENERAR PROYECTO</b></button>
           </div>
           <hr>
@@ -63,7 +63,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         <hr>
         <form method="POST" name="pruebas" id="pruebas" action="generar.php">
           <!-- <div class="col-sm-12 col-md-12"> -->
-          <input type="text" name="tabla" class="form-control fondo2 form-control-sm mb-1 W-100" placeholder="Tabla">
+          <input type="text" name="tabla" class="form-control fondo3 form-control-sm mb-1 W-100" placeholder="Tabla">
           <!-- </div> -->
           <!-- <hr> -->
           <br>
@@ -73,13 +73,13 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Input Hidden
             </div>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Select Option
             </div>
-            <div class="form-check color5">
+            <div class="form-check color6">
               <input type="radio" class="form-check-input" id="radio11" name="radio" value="radio11">Radio Option
             </div>
             <hr>

@@ -94,7 +94,7 @@ if (!empty($proyecto)) {
         "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='agregar'>
             <div class='row text-center'>
                 <div class='col-12'>
-                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
+                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
                 </div>
             </div> \r\r";
             $devu .= "<!-- Comienzo del formulario para insert tabla " . ucfirst($tabla) . " -->\r";
@@ -106,22 +106,22 @@ if (!empty($proyecto)) {
                 $devu .= "<div class='row text-center'>\r";
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
-                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color10'></i></span>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color2'></i></span>\r";
                 if ($row['tipo'] == 'int') {
-                        $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-                }elseif ($row['tipo'] == 'varchar') {
-                        $devu .= "<input type='text' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-                }elseif ($row['tipo'] == 'decimal') {
-                        $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "_i' value='' />\r";
-                }elseif ($row['tipo'] == 'date') {
-                        $devu .= "<input type='date' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-                }elseif ($row['tipo'] == 'datetime') {
-                        $devu .= "<input type='datetime' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-                }elseif ($row['tipo'] == 'text') {
-                        $devu .= "<textarea id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='Escriba aqui...' value='' ></textarea>\r";
-                }elseif ($row['tipo'] == 'tinyint') {
-                        $devu .= "<input type='checkbox' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' value='0'/> " . ucwords($row['columna']) . "\r";
-                }
+                    $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            }elseif ($row['tipo'] == 'varchar') {
+                    $devu .= "<input type='text' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            }elseif ($row['tipo'] == 'decimal') {
+                    $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "_i' value='' />\r";
+            }elseif ($row['tipo'] == 'date') {
+                    $devu .= "<input type='date' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            }elseif ($row['tipo'] == 'datetime') {
+                    $devu .= "<input type='datetime' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+            }elseif ($row['tipo'] == 'text') {
+                    $devu .= "<textarea id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='Escriba aqui...' value='' ></textarea>\r";
+            }elseif ($row['tipo'] == 'tinyint') {
+                    $devu .= "<input type='checkbox' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' value='0'/> " . ucwords($row['columna']) . "\r";
+            }
                     $devu .= "</div>\r";
                     $devu .= "</div>\r";
                     $devu .= "</div>\r";
@@ -141,7 +141,7 @@ if (!empty($proyecto)) {
                 "<!-- Boton Guardar -->
             <div class='row'>
                 <div class='col-12 derecha'>
-                    <button type='submit' id='guardar_i' class='btn boton1 color7 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+                    <button type='submit' id='guardar_i' class='btn boton1 color3 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
                 </div>
             </div>
             </form>
@@ -178,7 +178,7 @@ if (!empty($proyecto)) {
                 $devu .= "<div class='row text-center'>\r";
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
-                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color3'></i></span>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color5'></i></span>\r";
                 if ($row['tipo'] == 'int') {
                     $devu .= "<input type='number' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
                 } elseif ($row['tipo'] == 'varchar') {
@@ -252,7 +252,7 @@ if (!empty($proyecto)) {
             $devu .= "<div class='row text-center'>\r";
             $devu .= "<div class='col-md-12'>\r";
             $devu .= "<div class='input-group input-group mb-2'>\r";
-            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color2'></i></span>\r";
+            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color4'></i></span>\r";
             if ($row['tipo'] == 'int') {
                 $devu .= "<input type='number' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
             } elseif ($row['tipo'] == 'varchar') {
@@ -315,7 +315,7 @@ if (!empty($proyecto)) {
             "<!-- Titulo Data Table-->
         <div class='row text-center'>
             <div class='col-sm-7 col-md-9'>
-                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 fondo7' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
+                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo2' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
             <div class='col-sm-5 mb-2 col-md-3'>
                 <form class='d-flex w-100' method='POST' id='formbuscar' action='" . strtolower($tabla) . ".php' style='float: right;' >
@@ -323,12 +323,12 @@ if (!empty($proyecto)) {
                     <!-- Input Hidden requerimiento -->
                     <input type='hidden' id='requerimiento' name ='requerimiento' value='select'/>
                 </form>
-            </div>
+            </div> 
         </div>
         <!-- Comienzo de la Grid Datatable -->
         <table class='table table-bordered table-hover table-condensed letra-normal' id='" . strtolower($tabla) . "'>
             <thead>
-                <tr class='fondo5 color1'>
+                <tr class='fondo2 color3'>
                     <th scope='col' class='ancho5'>#</th>
                     <th scope='col' class='ancho15'>Codigo</th>
                     <th scope='col' class='ancho50'>Nombre</th>
@@ -343,8 +343,8 @@ if (!empty($proyecto)) {
         </table>
         <!-- Fin de la Tabla Data Table -->
         <!-- Cartel de Anuncios ó Spinner -->
-        <div class='color8 negrita letra-media' id='cartelito' style='display: block;'>Ingrese su busqueda...</div>
-        <div class='color9 negrita letra-media' id='alerta' style='display: none;'></div>
+        <div class='color2 negrita letra-media' id='cartelito' style='display: block;'>Ingrese su busqueda...</div>
+        <div class='color2 negrita letra-media' id='alerta' style='display: none;'></div>
         <!-- Fin del Card del Data Table-->
     </div>\r";
         $archivo = fopen($carpeta . "/search.php", "w+b");
