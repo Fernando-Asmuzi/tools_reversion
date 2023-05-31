@@ -51,7 +51,7 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
             <input type="text" name="base" class="form-control fondo3 form-control-sm mb-1" placeholder="Base de Datos" required>
           </div>
           <div class="col-sm-12 col-md-12">
-            <input type="text" name="pass" class="form-control fondo2 form-control-sm mb-1" placeholder="Contraseña" required>
+            <input type="text" name="pass" class="form-control fondo3 form-control-sm mb-1" placeholder="Contraseña" required>
           </div>
           <!-- Input Hidden Requerimiento para Update -->
           <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
@@ -67,39 +67,39 @@ $ruta = $_SERVER['DOCUMENT_ROOT'];
         <hr>
         
       <form method="POST" name="pruebas" id="pruebas" action="generar.php">
-            <input type="text" name="tabla" class="form-control fondo12 form-control-sm mb-1 W-100" placeholder="Tabla">
+            <input type="text" name="tabla" class="form-control fondo3 form-control-sm mb-1 W-100" placeholder="Tabla">
             <div class="col-sm-12 col-md-12 letra-media">
-              <div class="form-check mt-2 color11">
+              <div class="form-check mt-2 color10">
                 <input type="radio" class="form-check-input" id="radio1" name="radio" value="radio1" checked>Archivo Index
               </div>
-              <div class="form-check color11">
+              <div class="form-check color10">
                 <input type="radio" class="form-check-input " id="radio2" name="radio" value="radio2">Formulario ABM
               </div>
-              <div class="form-check color11">
+              <div class="form-check color10">
                 <input type="radio" class="form-check-input" id="radio3" name="radio" value="radio3">Formulario para
                 Buscar
               </div>
-              <div class="form-check color11">
+              <div class="form-check color10">
                 <input type="radio" class="form-check-input" id="radio4" name="radio" value="radio4">CRUD para Tabla
               </div>
-              <div class="form-check color11">
+              <div class="form-check color10">
                 <input type="radio" class="form-check-input" id="radio5" name="radio" value="radio5">Archivo JavaScript
               </div>
             </div>
             <br>
-            <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn boton10 mb-2 letra-media w-100"><i
+            <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn mb-2 btn-sm letra-media boton11 color7 btn-sm w-100"><i
                 class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
           </form>
         <form method="POST" name="radios" id="radios" action="generarRadio.php">
           <div class="col-sm-12 col-md-12 letra-media">
             <hr>
-            <div class="form-check color5">
+            <div class="form-check black">
               <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
             </div>
-            <div class="form-check color5">
+            <div class="form-check black">
               <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
             </div>
-            <div class="form-check color5">
+            <div class="form-check black">
               <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
             </div>
             <hr>
