@@ -6,7 +6,6 @@ fclose($file_handle);
 
 $array_proyec = explode("-", $contents);
 
-
 $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
@@ -19,7 +18,6 @@ if (!empty($proyecto)){
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));
 
-    
     //----------  Definición de parámetros de conexión ----------//
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
@@ -161,7 +159,6 @@ if (!empty($proyecto)){
             </form>
             <!-- Fin del Formulario -->
             <!-- Fin del Card -->
-=======
         <div class='row text-center'>
         <div class='col-12'>
         <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>

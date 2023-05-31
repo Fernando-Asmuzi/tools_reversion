@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<?php
+    include 'head.php';
+    include('conexion/conexion.php');
+    session_start();
+
+    // Código para registro de nuevo usuario REVISAR BIEN LAS VARIABLES
+    
+    if (isset($_POST['registrar'])) {
+        
+        $username = $_POST['user'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $conexion->prepare("SELECT * FROM usuario WHERE email=:email");
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            echo '<div class="alert alert-danger" role="alert">
+            El email ya se encuentra registrado
+            </div>';
+        }
+        if ($query->rowCount() == 0) {
+            $query = $conexion->prepare("INSERT INTO usuario(nombre,PASSWORD,email) VALUES (:username,:password_hash,:email)");
+            $query->bindParam("username", $username, PDO::PARAM_STR);
+            $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
+            $query->bindParam("email", $email, PDO::PARAM_STR);
+            $result = $query->execute();
+            if ($result) {
+                echo '<div class="alert alert-success" role="alert">
+                    El usuario se registró correctamente
+                    </div>';
+                    Header("Location: login.php");
+            } else {
+                echo '<div class="alert alert-danger" role="alert">
+                Algo salió mal, intente nuevamente
+                </div>';
+            }
+        }
+    } 
+?>
+
+<body class="text-center">
+    <div class="ancho40">
+    <main class="form-signin w-100 m-auto">
+        <form method="POST" action="" id="registrar" name="registrar">
+            <!-- 
+            <img class="mb-4" src="/tools_reversion/tools_reversion/assets/img/lo.png" alt="" width="150" height="100"> 
+            -->
+            <h1 class="h3 mb-3 fw-normal">Registro de usuario</h1>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="user" id="floatingInput" placeholder="Usuario">
+                <label for="floatingInput">Nombre de usuario</label>
+            </div> <br>
+            <div class="form-floating">
+                <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email">
+                <label for="floatingEmail">Correo electrónico</label>
+            </div> <br>
+            <div class="form-floating">
+                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña">
+                <label for="floatingPassword">Contraseña</label>
+            </div> <br>
+            <div class="botones">
+                <button class="w-100 btn btn-lg btn-primary" type="submit" name="registrar" value="registrar">Registrar usuario</button>
+                <a class="btn btn-danger" href="login.php" role="button">Cancelar</a>
+            </div>      
+        </form>
+    </main>
+    </div>
+</body>
+</html>

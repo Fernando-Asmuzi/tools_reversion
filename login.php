@@ -2,44 +2,71 @@
 <html lang="en" data-bs-theme="auto">
 
 <?php
-include 'head.php';
+
+use PhpMyAdmin\Header;
+
+    include 'head.php';
+    include('conexion/conexion.php');
+    session_start();
+
+    //---------------------------- Código de Inicio de Sesión ---------------------------//
+    if (isset($_POST['login'])) {
+        $username = $_POST['usuario'];
+        $password = $_POST['password'];
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario or email=:usuario");
+        $query->bindParam("usuario", $username, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        if (!$result) {
+            echo '<div class="alert alert-danger" role="alert">
+                El usuario ingresado es incorrecto
+                </div>';
+        } else {
+            
+            echo $password;
+            echo ' ';
+            echo $result['password'];
+            if (password_verify($password, $result['PASSWORD'])) {
+                $_SESSION['id'] = $result['id'];
+                echo '<p class="success">Congratulations, you are logged in!</p>';
+                Header("Location: index.php");
+            } else {
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Contraseña incorrecta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        }
+    }
 ?>
 
 <body class="text-center">
+    <div class="ancho40">
     <main class="form-signin w-100 m-auto">
-        <form method="POST" action="loginControl.php" id="login" name="login">
+        <form method="POST" action="" id="login" name="login">
             <!-- 
             <img class="mb-4" src="/tools_reversion/tools_reversion/assets/img/lo.png" alt="" width="150" height="100"> 
             -->
             <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
             <div class="form-floating">
-                <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario" required>
-                <label for="floatingInput">Usuario</label>
-            </div>
+                <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario o correo electrónico" required>
+                <label for="floatingInput">Usuario o correo electrónico</label>
+            </div> <br>
             <div class="form-floating">
                 <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
                 <label for="floatingPassword">Contraseña</label>
-            </div>
-            <div class="checkbox mb-3">
+            </div> <br>
+            <!-- <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Recordarme
                 </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+            </div> -->
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Ingresar</button>
+            <a href="registro.php">Registrar nuevo usuario</a> <br>
+            <a href="">¿Olvidaste tu contraseña?</a>
         </form>
     </main>
-
-    <script>
-    $(document).ready(function() {
-    event.preventDefault();
-    $('#login').submit(function(event) {
-        $.ajax({
-        type: 'POST',
-        url: $(this).attr('action'),
-        data: $(this).serialize(),
-        })
-    });
-    });
-    </script>
+    </div>
 </body>
 </html>
