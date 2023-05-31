@@ -1,5 +1,7 @@
 <?php
 
+echo 'llego aca';
+
 $file_handle = fopen('tmp.txt', 'r');
 $contents = fread($file_handle, filesize('tmp.txt'));
 fclose($file_handle);
@@ -938,7 +940,6 @@ if (!empty($proyecto)){
         $devu .= "\r";
         echo $devu;
     }
-
 } else {
     echo 'No se ha creado el proyecto';
 }

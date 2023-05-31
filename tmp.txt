@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-C:/AppServ/www/Projet-Projet-prueba
-=======
-C:/AppServ/www/nuevaPrueba-nuevaPrueba-tools_reversion-admin123
->>>>>>> 34caa878c3c624cb75c6037bbf307f72c2dea970
+C:/AppServ/www/prueba-prueba-tools_reversion-admin123
