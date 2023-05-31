@@ -49,7 +49,7 @@
             echo ' ';
             echo $result['password'];
 
-            if (password_verify($password, $result['PASSWORD'])) {
+            if (password_verify(sha1($password), $result['PASSWORD'])) {
                 $_SESSION['id'] = $result['id'];
                 echo '<p class="success">Congratulations, you are logged in!</p>';
             } else {
