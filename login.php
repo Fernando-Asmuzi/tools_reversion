@@ -2,58 +2,40 @@
 <html lang="en" data-bs-theme="auto">
 
 <?php
+
+use PhpMyAdmin\Header;
+
     include 'head.php';
     include('conexion/conexion.php');
     session_start();
-
-    // Código para registro de nuevo usuario REVISAR BIEN LAS VARIABLES
-    /*
-    if (isset($_POST['register'])) {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);
-        $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
-        $query->bindParam("email", $email, PDO::PARAM_STR);
-        $query->execute();
-        if ($query->rowCount() > 0) {
-            echo '<p class="error">The email address is already registered!</p>';
-        }
-        if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO users(USERNAME,PASSWORD,EMAIL) VALUES (:username,:password_hash,:email)");
-            $query->bindParam("username", $username, PDO::PARAM_STR);
-            $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
-            $query->bindParam("email", $email, PDO::PARAM_STR);
-            $result = $query->execute();
-            if ($result) {
-                echo '<p class="success">Your registration was successful!</p>';
-            } else {
-                echo '<p class="error">Something went wrong!</p>';
-            }
-        }
-    } */
 
     //---------------------------- Código de Inicio de Sesión ---------------------------//
     if (isset($_POST['login'])) {
         $username = $_POST['usuario'];
         $password = $_POST['password'];
-        $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario");
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario or email=:usuario");
         $query->bindParam("usuario", $username, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo '<p class="error">Usuario incorrecto</p>';
+            echo '<div class="alert alert-danger" role="alert">
+                El usuario ingresado es incorrecto
+                </div>';
         } else {
             
             echo $password;
             echo ' ';
             echo $result['password'];
-
-            if (password_verify(sha1($password), $result['PASSWORD'])) {
+            if (password_verify($password, $result['PASSWORD'])) {
                 $_SESSION['id'] = $result['id'];
                 echo '<p class="success">Congratulations, you are logged in!</p>';
+                Header("Location: index.php");
             } else {
-                echo '<p class="error">Contraseña incorrecta</p>';
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Contraseña incorrecta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
             }
         }
     }
@@ -68,18 +50,18 @@
             -->
             <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
             <div class="form-floating">
-                <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario" required>
-                <label for="floatingInput">Usuario</label>
+                <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario o correo electrónico" required>
+                <label for="floatingInput">Usuario o correo electrónico</label>
             </div> <br>
             <div class="form-floating">
                 <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
                 <label for="floatingPassword">Contraseña</label>
-            </div>
-            <div class="checkbox mb-3">
+            </div> <br>
+            <!-- <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Recordarme
                 </label>
-            </div>
+            </div> -->
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Ingresar</button>
             <a href="registro.php">Registrar nuevo usuario</a> <br>
             <a href="">¿Olvidaste tu contraseña?</a>
