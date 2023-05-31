@@ -32,31 +32,6 @@
             }
         }
     } */
-
-    //---------------------------- Código de Inicio de Sesión ---------------------------//
-    if (isset($_POST['login'])) {
-        $username = $_POST['usuario'];
-        $password = $_POST['password'];
-        $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario");
-        $query->bindParam("usuario", $username, PDO::PARAM_STR);
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        if (!$result) {
-            echo '<p class="error">Usuario incorrecto</p>';
-        } else {
-            
-            echo $password;
-            echo ' ';
-            echo $result['password'];
-
-            if (password_verify($password, $result['PASSWORD'])) {
-                $_SESSION['id'] = $result['id'];
-                echo '<p class="success">Congratulations, you are logged in!</p>';
-            } else {
-                echo '<p class="error">Contraseña incorrecta</p>';
-            }
-        }
-    }
 ?>
 
 <body class="text-center">
@@ -81,8 +56,7 @@
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Ingresar</button>
-            <a href="registro.php">Registrar nuevo usuario</a> <br>
-            <a href="">¿Olvidaste tu contraseña?</a>
+            
         </form>
     </main>
     </div>
