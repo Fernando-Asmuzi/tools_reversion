@@ -3,8 +3,6 @@
 
 <?php
 
-use PhpMyAdmin\Header;
-
     include 'head.php';
     include('conexion/conexion.php');
     session_start();
@@ -13,29 +11,20 @@ use PhpMyAdmin\Header;
     if (isset($_POST['login'])) {
         $username = $_POST['usuario'];
         $password = $_POST['password'];
-        $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        //$password_hash = password_hash($password, PASSWORD_BCRYPT);
         $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario or email=:usuario");
         $query->bindParam("usuario", $username, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo '<div class="alert alert-danger" role="alert">
-                El usuario ingresado es incorrecto
-                </div>';
+            echo '<script language="javascript">alert("El usuario ingresado es incorrecto");</script>';
         } else {
-            
-            echo $password;
-            echo ' ';
-            echo $result['password'];
-            if (password_verify($password, $result['PASSWORD'])) {
+            $hash=$result['password'];
+            if (password_verify($password, $hash)) {
                 $_SESSION['id'] = $result['id'];
-                echo '<p class="success">Congratulations, you are logged in!</p>';
                 Header("Location: index.php");
             } else {
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Contraseña incorrecta</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
+                echo '<script language="javascript">alert("La contraseña es incorrecta");</script>';
             }
         }
     }

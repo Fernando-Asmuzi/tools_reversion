@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:/AppServ/www/Projet-Projet-prueba-admin123
+=======
+C:/AppServ/www/prueba-prueba-tools_reversion-admin123
+>>>>>>> 9ae015cd4aa3b445ee5d8f476e5fe282a6c4d724

@@ -18,9 +18,7 @@
         $query->bindParam("email", $email, PDO::PARAM_STR);
         $query->execute();
         if ($query->rowCount() > 0) {
-            echo '<div class="alert alert-danger" role="alert">
-            El email ya se encuentra registrado
-            </div>';
+            echo '<script language="javascript">alert("El email ya se encuentra registrado");</script>';
         }
         if ($query->rowCount() == 0) {
             $query = $conexion->prepare("INSERT INTO usuario(nombre,PASSWORD,email) VALUES (:username,:password_hash,:email)");
@@ -29,14 +27,10 @@
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $result = $query->execute();
             if ($result) {
-                echo '<div class="alert alert-success" role="alert">
-                    El usuario se registró correctamente
-                    </div>';
-                    Header("Location: login.php");
+                echo '<script language="javascript">alert("El usuario se registró correctamente");</script>';
+                Header("Location: login.php");
             } else {
-                echo '<div class="alert alert-danger" role="alert">
-                Algo salió mal, intente nuevamente
-                </div>';
+                echo '<script language="javascript">alert("Se generó un error inesperado, intente nuevamente");</script>';
             }
         }
     } 
@@ -51,15 +45,15 @@
             -->
             <h1 class="h3 mb-3 fw-normal">Registro de usuario</h1>
             <div class="form-floating">
-                <input type="text" class="form-control" name="user" id="floatingInput" placeholder="Usuario">
+                <input type="text" class="form-control" name="user" id="floatingInput" placeholder="Usuario" required>
                 <label for="floatingInput">Nombre de usuario</label>
             </div> <br>
             <div class="form-floating">
-                <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" required>
                 <label for="floatingEmail">Correo electrónico</label>
             </div> <br>
             <div class="form-floating">
-                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña">
+                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
                 <label for="floatingPassword">Contraseña</label>
             </div> <br>
             <div class="botones">
