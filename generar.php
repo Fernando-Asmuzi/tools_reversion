@@ -123,19 +123,19 @@ if (!empty($proyecto)){
                 $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color2'></i></span>\r";
                 if ($row['tipo'] == 'int') {
                     $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            }elseif ($row['tipo'] == 'varchar') {
+                }elseif ($row['tipo'] == 'varchar') {
                     $devu .= "<input type='text' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            }elseif ($row['tipo'] == 'decimal') {
+                }elseif ($row['tipo'] == 'decimal') {
                     $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "_i' value='' />\r";
-            }elseif ($row['tipo'] == 'date') {
+                }elseif ($row['tipo'] == 'date') {
                     $devu .= "<input type='date' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            }elseif ($row['tipo'] == 'datetime') {
+                }elseif ($row['tipo'] == 'datetime') {
                     $devu .= "<input type='datetime' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            }elseif ($row['tipo'] == 'text') {
+                }elseif ($row['tipo'] == 'text') {
                     $devu .= "<textarea id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='Escriba aqui...' value='' ></textarea>\r";
-            }elseif ($row['tipo'] == 'tinyint') {
+                }elseif ($row['tipo'] == 'tinyint') {
                     $devu .= "<input type='checkbox' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' value='0'/> " . ucwords($row['columna']) . "\r";
-            }
+                }
                     $devu .= "</div>\r";
                     $devu .= "</div>\r";
                     $devu .= "</div>\r";
@@ -143,80 +143,25 @@ if (!empty($proyecto)){
             $devu .= "\r";
             $devu .=
                 "<!-- Input Hidden Requerimiento para Insert -->
-            <input type='hidden' id='requerimiento' name ='requerimiento' value='insert'/>\r\r";
+                <input type='hidden' id='requerimiento' name ='requerimiento' value='insert'/>\r\r";
             $devu .=
                 "<!-- Linea divisora entre ingresos y botones -->
-            <div class='row text-center'>
-                <div class='col-md-12'>
-                    <hr>
-                </div>
-            </div>\r\r";
+                <div class='row text-center'>
+                    <div class='col-md-12'>
+                        <hr>
+                    </div>
+                </div>\r\r";
             $devu .=
                 "<!-- Boton Guardar -->
-            <div class='row'>
-                <div class='col-12 derecha'>
-                    <button type='submit' id='guardar_i' class='btn boton1 color3 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+                <div class='row'>
+                    <div class='col-12 derecha'>
+                        <button type='submit' id='guardar_i' class='btn boton1 color3 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+                    </div>
                 </div>
-            </div>
-            </form>
+                </form>
             <!-- Fin del Formulario -->
             <!-- Fin del Card -->
-        <div class='row text-center'>
-        <div class='col-12'>
-        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
-        </div>
-        </div> \r\r";
-        $devu .= "<!-- Comienzo del formulario para insert tabla " . ucfirst($tabla) . " -->\r";
-        $devu .= "<form method='POST' id='" . strtolower($tabla) . "_i' action='" . strtolower($tabla) . ".php'>\r\r";
-        // For que Arma los Input del Formulario
-        for ($counter = 0; $counter < $campos; $counter++) {
-            $row = $resultado->fetch(PDO::FETCH_ASSOC);
-            $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
-            $devu .= "<div class='row text-center'>\r";
-            $devu .= "<div class='col-md-12'>\r";
-            $devu .= "<div class='input-group input-group mb-2'>\r";
-            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color10'></i></span>\r";
-            if ($row['tipo'] == 'int') {
-                $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'varchar') {
-                $devu .= "<input type='text' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'decimal') {
-                $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "_i' value='' />\r";
-            } elseif ($row['tipo'] == 'date') {
-                $devu .= "<input type='date' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'datetime') {
-                $devu .= "<input type='datetime' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'text') {
-                $devu .= "<textarea id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='Escriba aqui...' value='' ></textarea>\r";
-            } elseif ($row['tipo'] == 'tinyint') {
-                $devu .= "<input type='checkbox' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' value='0'/> " . ucwords($row['columna']) . "\r";
-            }
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-        }
-        $devu .= "\r";
-        $devu .=
-        "<!-- Input Hidden Requerimiento para Insert -->
-        <input type='hidden' id='requerimiento' name ='requerimiento' value='insert'/>\r\r";
-        $devu .=
-        "<!-- Linea divisora entre ingresos y botones -->
-        <div class='row text-center'>
-        <div class='col-md-12'>
-        <hr>
-        </div>
-        </div>\r\r";
-        $devu .=
-        "<!-- Boton Guardar -->
-        <div class='row'>
-        <div class='col-12 derecha'>
-        <button type='submit' id='guardar_i' class='btn boton1 color7 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
-        </div>
-        </div>
-        </form>
-        <!-- Fin del Formulario -->
-        <!-- Fin del Card -->
-        </div>\r";
+            </div>\r";
 
         //-------- Escritura del archivo -------//
         $archivo = fopen($carpeta . "/add.php", "w+b");
@@ -235,13 +180,13 @@ if (!empty($proyecto)){
         $devu .= "<!-- Rutina de modificacion de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card -->\r";
         $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='modificar'>
-        <div class='row text-center'>
-        <div class='col-12'>
-        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
-        </div>
-        </div>
-        <!-- Comienzo del Formulario para Update " . ucfirst($tabla) . " -->
-        <form method='POST' id='" . strtolower($tabla) . "_u' action='" . strtolower($tabla) . ".php'>\r\r";
+            <div class='row text-center'>
+                <div class='col-12'>
+                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
+                </div>
+            </div>
+            <!-- Comienzo del Formulario para Update " . ucfirst($tabla) . " -->
+            <form method='POST' id='" . strtolower($tabla) . "_u' action='" . strtolower($tabla) . ".php'>\r\r";
 
             // For que Arma los Input del Formulario
             for ($counter = 0; $counter < $campos; $counter++) {
@@ -269,141 +214,115 @@ if (!empty($proyecto)){
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
                 $devu .= "</div>\r";
-        // For que Arma los Input del Formulario
-        for ($counter = 0; $counter < $campos; $counter++){
-            $row = $resultado->fetch(PDO::FETCH_ASSOC);
-            $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
-            $devu .= "<div class='row text-center'>\r";
-            $devu .= "<div class='col-md-12'>\r";
-            $devu .= "<div class='input-group input-group mb-2'>\r";
-            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color3'></i></span>\r";
-            if ($row['tipo'] == 'int') {
-                $devu .= "<input type='number' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'varchar') {
-                $devu .= "<input type='text' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'decimal') {
-                $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'date') {
-                $devu .= "<input type='date' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'datetime') {
-                $devu .= "<input type='datetime' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'text') {
-                $devu .= "<textarea id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
-            } elseif ($row['tipo'] == 'tinyint') {
-                $devu .= "<input type='checkbox' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
             }
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-        }
-        $devu .= "\r";
-        $devu .=
-        "<!-- Input Hidden Requerimiento para Update -->
-        <input type='hidden' id='requerimiento' name ='requerimiento' value='update'/>\r\r";
-        $devu .=
-        "<!-- Linea divisora entre ingresos y botones -->
-        <div class='row text-center'>
-        <div class='col-md-12'>
-        <hr>
-        </div>
-        </div>\r\r";
-        $devu .=
-        "<!-- Boton Modificar -->
-        <div class='row'>
-        <div class='col-12 derecha'>
-        <button type='reset' id='cancelar_u' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-        <button type='submit' id='guardar_u' class='btn boton3 color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
-        </div>
-        </div>
-        </form>
-        <!-- Fin del Formulario " . ucfirst($tabla) . " -->
-        <!-- Fin del Card -->
-        </div>\r";
+            $devu .= "\r";
+            $devu .=
+            "<!-- Input Hidden Requerimiento para Update -->
+            <input type='hidden' id='requerimiento' name ='requerimiento' value='update'/>\r\r";
+            $devu .=
+            "<!-- Linea divisora entre ingresos y botones -->
+            <div class='row text-center'>
+            <div class='col-md-12'>
+            <hr>
+            </div>
+            </div>\r\r";
+            $devu .=
+            "<!-- Boton Modificar -->
+            <div class='row'>
+            <div class='col-12 derecha'>
+            <button type='reset' id='cancelar_u' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
+            <button type='submit' id='guardar_u' class='btn boton3 color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
+            </div>
+            </div>
+            </form>
+            <!-- Fin del Formulario " . ucfirst($tabla) . " -->
+            <!-- Fin del Card -->
+            </div>\r";
 
-        //-------- Escritura del archivo -------//
-        $archivo = fopen($carpeta . "/edit.php", "w+b");
-        fwrite($archivo, $devu);
-        fflush($archivo);
-        fclose($archivo);
-        // Muestro el codigo
-        echo $devu;
+            //-------- Escritura del archivo -------//
+            $archivo = fopen($carpeta . "/edit.php", "w+b");
+            fwrite($archivo, $devu);
+            fflush($archivo);
+            fclose($archivo);
+            // Muestro el codigo
+            echo $devu;
         
-        //----- Creación Archivo para Delete -----//
-        $resultado->execute();
-        $devu = '';
-        $devu .= "<!-- DELETE --> \r";
-        $devu .= "<!-- Nombre del archivo ( delete.php ) -->\r";
-        $devu .= "<!-- Rutina de borrar de la tabla " . ucfirst($tabla) . " -->\r";
-        $devu .= "<!-- Comienzo del Card -->\r";
-        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='eliminar'>\r";
-        $devu .= "
-        <div class='row text-center'>
-        <div class='col-12'>
-        <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
-        </div>
-        </div>\r";
-        $devu .= "
-        <!-- Comienzo del Formulario para Delete " . ucfirst($tabla) . " -->
-        <form method='POST' id='" . strtolower($tabla) . "_d' action='" . strtolower($tabla) . ".php'>\r\r";
-        // For que Arma los Input del Formulario
-        for ($counter = 0; $counter < $campos; $counter++) {
-            $row = $resultado->fetch(PDO::FETCH_ASSOC);
-            $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
-            $devu .= "<div class='row text-center'>\r";
-            $devu .= "<div class='col-md-12'>\r";
-            $devu .= "<div class='input-group input-group mb-2'>\r";
-            $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color4'></i></span>\r";
-            if ($row['tipo'] == 'int') {
-                $devu .= "<input type='number' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'varchar') {
-                $devu .= "<input type='text' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'decimal') {
-                $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'date') {
-                $devu .= "<input type='date' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'datetime') {
-                $devu .= "<input type='datetime' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
-            } elseif ($row['tipo'] == 'text') {
-                $devu .= "<textarea id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
-            } elseif ($row['tipo'] == 'tinyint') {
-                $devu .= "<input type='checkbox' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
+            //----- Creación Archivo para Delete -----//
+            $resultado->execute();
+            $devu = '';
+            $devu .= "<!-- DELETE --> \r";
+            $devu .= "<!-- Nombre del archivo ( delete.php ) -->\r";
+            $devu .= "<!-- Rutina de borrar de la tabla " . ucfirst($tabla) . " -->\r";
+            $devu .= "<!-- Comienzo del Card -->\r";
+            $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='eliminar'>\r";
+            $devu .= "
+            <div class='row text-center'>
+            <div class='col-12'>
+            <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
+            </div>
+            </div>\r";
+            $devu .= "
+            <!-- Comienzo del Formulario para Delete " . ucfirst($tabla) . " -->
+            <form method='POST' id='" . strtolower($tabla) . "_d' action='" . strtolower($tabla) . ".php'>\r\r";
+            // For que Arma los Input del Formulario
+            for ($counter = 0; $counter < $campos; $counter++) {
+                $row = $resultado->fetch(PDO::FETCH_ASSOC);
+                $devu .= "<!-- Input de " . $row['columna'] . " -->\r";
+                $devu .= "<div class='row text-center'>\r";
+                $devu .= "<div class='col-md-12'>\r";
+                $devu .= "<div class='input-group input-group mb-2'>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color4'></i></span>\r";
+                if ($row['tipo'] == 'int') {
+                    $devu .= "<input type='number' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+                } elseif ($row['tipo'] == 'varchar') {
+                    $devu .= "<input type='text' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+                } elseif ($row['tipo'] == 'decimal') {
+                    $devu .= "<input type='number' step='0.50' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+                } elseif ($row['tipo'] == 'date') {
+                    $devu .= "<input type='date' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+                } elseif ($row['tipo'] == 'datetime') {
+                    $devu .= "<input type='datetime' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
+                } elseif ($row['tipo'] == 'text') {
+                    $devu .= "<textarea id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='Escriba aqui..." . "' value='' ></textarea>\r";
+                } elseif ($row['tipo'] == 'tinyint') {
+                    $devu .= "<input type='checkbox' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' value=''/>" . "<label for='" . $row['columna'] . "_u'>Texto del checkbox</label>\r";
+                }
+                $devu .= "</div>\r";
+                $devu .= "</div>\r";
+                $devu .= "</div>\r";
             }
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-            $devu .= "</div>\r";
-        }
-        $devu .= "\r";
-        $devu .=
-        "<!-- Input Hidden Requerimiento para Delete -->
-        <input type='hidden' id='requerimiento' name ='requerimiento' value='delete'/>\r\r";
-        $devu .=
-        "<!-- Linea divisora entre ingresos y botones -->
-        <div class='row text-center'>
-        <div class='col-md-12'>
-        <hr>
-        </div>
-        </div>\r\r";
-        $devu .=
-        "<!-- Boton Eliminar -->
-        <div class='row'>
-        <div class='col-12 derecha'>
-        <button  type='reset' id='cancelar_d' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-        <button type='submit' id='guardar_d' class='btn boton2 color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
-        </div>
-        </div>
-        </form>
-        <!-- Fin del Formulario " . ucfirst($tabla) . " -->
-        <!-- Fin del Card -->
-        </div>\r";
+            $devu .= "\r";
+            $devu .=
+            "<!-- Input Hidden Requerimiento para Delete -->
+            <input type='hidden' id='requerimiento' name ='requerimiento' value='delete'/>\r\r";
+            $devu .=
+            "<!-- Linea divisora entre ingresos y botones -->
+            <div class='row text-center'>
+            <div class='col-md-12'>
+            <hr>
+            </div>
+            </div>\r\r";
+            $devu .=
+            "<!-- Boton Eliminar -->
+            <div class='row'>
+            <div class='col-12 derecha'>
+            <button  type='reset' id='cancelar_d' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
+            <button type='submit' id='guardar_d' class='btn boton2 color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
+            </div>
+            </div>
+            </form>
+            <!-- Fin del Formulario " . ucfirst($tabla) . " -->
+            <!-- Fin del Card -->
+            </div>\r";
 
-        //-------- Escritura del archivo -------//
-        $archivo = fopen($carpeta . "/delete.php", "w+b");
-        fwrite($archivo, $devu);
-        fflush($archivo);
-        fclose($archivo);
-        // Muestro el codigo
-        echo $devu;
-    }
+            //-------- Escritura del archivo -------//
+            $archivo = fopen($carpeta . "/delete.php", "w+b");
+            fwrite($archivo, $devu);
+            fflush($archivo);
+            fclose($archivo);
+            // Muestro el codigo
+            echo $devu;
+        }
 
     //---------------- Archivo para Search -----------------//
     if ($_POST['radio'] == 'radio3') {
@@ -430,11 +349,17 @@ if (!empty($proyecto)){
         <!-- Comienzo de la Grid Datatable -->
         <table class='table table-bordered table-hover table-condensed letra-normal' id='" . strtolower($tabla) . "'>
             <thead>
-                <tr class='fondo2 color3'>
-                    <th scope='col' class='ancho5'>#</th>
-                    <th scope='col' class='ancho15'>Codigo</th>
-                    <th scope='col' class='ancho50'>Nombre</th>
-                    <th scope='col' class='ancho20'>Stock</th>
+                <tr class='fondo5 color1'> \r";
+                    //------------------ Generador de campos para cabecera de la tabla -------------------------//
+                    for ($counter = 0; $counter < $camposSearch; $counter++) {
+                        $row = $resultado->fetch(PDO::FETCH_ASSOC); 
+                        if ($row['columna'] == 'id') {
+                            $devu .= "<th scope='col' class='ancho10'>Código</th> \r";
+                        } else {
+                            $devu .= " <th scope='col' class='ancho25'>" . ucfirst($row['columna']) . "</th> \r";
+                        }
+                    }
+                    $devu .= "
                     <th scope='col' class='ancho5'></th>
                     <th scope='col' class='ancho5'></th>
                 </tr>
