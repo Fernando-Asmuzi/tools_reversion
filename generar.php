@@ -108,7 +108,7 @@ if (!empty($proyecto)){
 
             <div class='row text-center'>
                 <div class='col-12'>
-                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
+                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
                 </div>
             </div> \r\r";
             $devu .= "<!-- Comienzo del formulario para insert tabla " . ucfirst($tabla) . " -->\r";
@@ -155,7 +155,7 @@ if (!empty($proyecto)){
                 "<!-- Boton Guardar -->
                 <div class='row'>
                     <div class='col-12 derecha'>
-                        <button type='submit' id='guardar_i' class='btn boton1 color3 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+                        <button type='submit' id='guardar_i' class='btn fondo2 color7 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
                     </div>
                 </div>
                 </form>
@@ -336,7 +336,7 @@ if (!empty($proyecto)){
         "<!-- Titulo Data Table-->
         <div class='row text-center'>
             <div class='col-sm-7 col-md-9'>
-                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo2' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
+                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo1' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
             <div class='col-sm-5 mb-2 col-md-3'>
                 <form class='d-flex w-100' method='POST' id='formbuscar' action='" . strtolower($tabla) . ".php' style='float: right;' >
@@ -349,7 +349,7 @@ if (!empty($proyecto)){
         <!-- Comienzo de la Grid Datatable -->
         <table class='table table-bordered table-hover table-condensed letra-normal' id='" . strtolower($tabla) . "'>
             <thead>
-                <tr class='fondo5 color1'> \r";
+                <tr class='fondo2 color7'> \r";
                     //------------------ Generador de campos para cabecera de la tabla -------------------------//
                     for ($counter = 0; $counter < $camposSearch; $counter++) {
                         $row = $resultado->fetch(PDO::FETCH_ASSOC); 
