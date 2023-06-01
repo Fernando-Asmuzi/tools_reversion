@@ -4,7 +4,7 @@
 <?php
 
     include 'head.php';
-    include('conexion/conexion.php');
+    include ('conexion/conexion.php');
     session_start();
 
     //---------------------------- Código de Inicio de Sesión ---------------------------//
@@ -17,7 +17,7 @@
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo '<script language="javascript">alert("El usuario ingresado es incorrecto");</script>';
+            echo '<script language="javascript">alert("El usuario o email ingresado es incorrecto");</script>';
         } else {
             $hash=$result['password'];
             if (password_verify($password, $hash)) {
@@ -34,9 +34,6 @@
     <div class="ancho40">
     <main class="form-signin w-100 m-auto">
         <form method="POST" action="" id="login" name="login">
-            <!-- 
-            <img class="mb-4" src="/tools_reversion/tools_reversion/assets/img/lo.png" alt="" width="150" height="100"> 
-            -->
             <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
             <div class="form-floating">
                 <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario o correo electrónico" required>
