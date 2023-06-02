@@ -13,7 +13,6 @@
         </ul>
     </footer>
 </div>
-
 <!-- Incluir JS -->
 <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 <script src="assets/js/popper.min.js" type="text/javascript"></script>

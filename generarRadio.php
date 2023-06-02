@@ -12,7 +12,6 @@ $proyecto0 = $array_proyec[0];
 $proyecto = $array_proyec[1];
 $base = $array_proyec[2];
 
-
 if (!empty($proyecto)) {
     $tabla = $_POST['tabla'];
     $carpeta = $proyecto0 . '/' . trim(strtolower($tabla));

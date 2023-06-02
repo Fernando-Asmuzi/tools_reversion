@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-
 <?php
     include 'head.php';
     include('conexion/conexion.php');

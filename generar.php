@@ -1,6 +1,5 @@
 <?php
 
-echo 'llego aca';
 
 $file_handle = fopen('tmp.txt', 'r');
 $contents = fread($file_handle, filesize('tmp.txt'));

@@ -8,7 +8,7 @@ $pass = $_POST['pass'];
 $proyecto0 = $raiz0 . '/' . $proyecto;
 
 $temporal = fopen("tmp.txt", "w");
- 
+
 fwrite($temporal, $proyecto0.'-');
 fwrite($temporal, $proyecto.'-');
 fwrite($temporal, $base.'-');

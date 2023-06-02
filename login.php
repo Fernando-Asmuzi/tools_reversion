@@ -11,7 +11,6 @@
     if (isset($_POST['login'])) {
         $username = $_POST['usuario'];
         $password = $_POST['password'];
-        //$password_hash = password_hash($password, PASSWORD_BCRYPT);
         $query = $conexion->prepare("SELECT * FROM usuario WHERE nombre=:usuario or email=:usuario");
         $query->bindParam("usuario", $username, PDO::PARAM_STR);
         $query->execute();
