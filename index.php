@@ -1,10 +1,10 @@
 <?php
-session_start();
+//session_start();
 
-if(!isset($_SESSION['id'])){
-    header('Location: login.php');
-    exit;
-} else { ?>
+//if(!isset($_SESSION['id'])){
+  //  header('Location: login.php');
+   // exit;
+//} else { ?> 
       <?php
       include 'head.php';
       $ruta = $_SERVER['DOCUMENT_ROOT'];
@@ -209,8 +209,9 @@ if(!isset($_SESSION['id'])){
       </script>
     </body>
     </html>
-<?php  
-}
-?>
+ 
+  <?php   
+  //}
+  ?>
 
 

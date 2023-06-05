@@ -10,7 +10,7 @@ if(!isset($_SESSION['id'])){
     include('conexion/conexion.php');
     $ruta = $_SERVER['DOCUMENT_ROOT'];
 
-    //---------------------------- Código de Inicio de Sesión ---------------------------//
+    //----------------------------  ---------------------------//
     if (isset($_POST['nuevoCambio'])) {
         $title = $_POST['titulo'];
         $descrip = $_POST['descripcion'];

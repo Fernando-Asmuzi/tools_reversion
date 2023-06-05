@@ -29,29 +29,29 @@
     }
 ?>
 
-<body class="text-center">
-    <div class="ancho40">
-    <main class="form-signin w-100 m-auto">
-        <form method="POST" action="" id="login" name="login">
-            <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
-            <div class="form-floating">
-                <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario o correo electrónico" required>
-                <label for="floatingInput">Usuario o correo electrónico</label>
-            </div> <br>
-            <div class="form-floating">
-                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
-                <label for="floatingPassword">Contraseña</label>
-            </div> <br>
-            <!-- <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Recordarme
-                </label>
-            </div> -->
-            <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Ingresar</button>
-            <a href="registro.php">Registrar nuevo usuario</a> <br>
-            <a href="">¿Olvidaste tu contraseña?</a>
-        </form>
-    </main>
+<body>
+    <div class="ancho30" style="text-align: center; margin:auto;">
+        <main class="form-signin w-100 m-auto">
+            <form method="POST" action="" id="login" name="login">
+                <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="usuario" id="floatingInput" placeholder="Usuario o correo electrónico" required>
+                    <label for="floatingInput">Usuario o correo electrónico</label>
+                </div> <br>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
+                    <label for="floatingPassword">Contraseña</label>
+                </div> <br>
+                <!-- <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                    </label>
+                </div> -->
+                <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Ingresar</button>
+                <a href="registro.php">Registrar nuevo usuario</a> <br>
+                <a href="">¿Olvidaste tu contraseña?</a>
+            </form>
+        </main>
     </div>
 </body>
 </html>

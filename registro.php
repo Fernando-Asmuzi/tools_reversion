@@ -36,7 +36,7 @@
 ?>
 
 <body class="text-center">
-    <div class="ancho40">
+    <div class="ancho30" style="text-align: center; margin:auto;">
     <main class="form-signin w-100 m-auto">
         <form method="POST" action="" id="registrar" name="registrar">
             <!-- 
@@ -55,9 +55,9 @@
                 <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Contraseña" required>
                 <label for="floatingPassword">Contraseña</label>
             </div> <br>
-            <div class="botones">
-                <button class="w-100 btn btn-lg btn-primary" type="submit" name="registrar" value="registrar">Registrar usuario</button>
-                <a class="btn btn-danger" href="login.php" role="button">Cancelar</a>
+            <div class="justify-content-between" style="display: flex;">
+                <button class="w-100 btn btn-primary" type="submit" name="registrar" value="registrar" style="margin-right: 2px;">Registrar usuario</button>
+                <a class="w-100 btn btn-danger" href="login.php" role="button" style="margin-left: 2px;">Cancelar</a>
             </div>      
         </form>
     </main>
