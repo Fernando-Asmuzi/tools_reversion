@@ -71,7 +71,7 @@
                 <input type="text" name="base" class="form-control fondo3 form-control-sm mb-1" placeholder="Base de Datos" required>
               </div>
               <div class="col-sm-12 col-md-12">
-                <input type="text" name="pass" class="form-control fondo2 form-control-sm mb-1" placeholder="Contraseña" required>
+                <input type="text" name="pass" class="form-control fondo3 form-control-sm mb-1" placeholder="Contraseña" required>
               </div>
               <!-- Input Hidden Requerimiento para Update -->
               <input type='hidden' id='ruta' name='ruta' value=<?php $ruta; ?> />
@@ -106,19 +106,19 @@
                   </div>
                 </div>
                 <br>
-                <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn boton10 mb-2 letra-media w-100"><i
+                <button title="Generar Codigo" id="botoncodigo" type="submit" name="submit" class="btn letra-media btn-sm boton9 color7 bg-primary btn-sm w-100"><i
                     class="bi bi-code-square"></i><b> GENERAR CODIGO</b></button>
             </form>
             <form method="POST" name="radios" id="radios" action="generarRadio.php">
               <div class="col-sm-12 col-md-12 letra-media">
                 <hr>
-                <div class="form-check color5">
+                <div class="form-check colo11">
                   <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
                 </div>
-                <div class="form-check color5">
+                <div class="form-check colo11">
                   <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
                 </div>
-                <div class="form-check color5">
+                <div class="form-check colo11">
                   <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
                 </div>
                 <hr>
