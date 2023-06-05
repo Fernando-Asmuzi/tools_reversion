@@ -9,7 +9,7 @@
             <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Municipalidad San Pedro de Jujuy</span> 
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <img src="/tools_reversion/tools_reversion/assets/img/lo.png" alt="">
+            <img src="assets/img/lo.png" alt="">
         </ul>
     </footer>
 </div>

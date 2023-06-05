@@ -28,12 +28,12 @@
               <button type="submit" name="cambios" class="btn btn-outline-dark">Cambios</button>
             </form>
             <?php
-	              if(isset($_POST["principal"])){
-		              header('Location: index.php'); 
-	              }else if(isset($_POST["cambios"])){
-		              header('Location: cambios.php');    
-                }	
-                ?>
+                  if(isset($_POST["principal"])){
+                    header('Location: index.php'); 
+                  }else if(isset($_POST["cambios"])){
+                    header('Location: cambios.php');    
+                  }	
+                  ?>
           </div>
         </div>
     </nav>
@@ -112,13 +112,13 @@
             <form method="POST" name="radios" id="radios" action="generarRadio.php">
               <div class="col-sm-12 col-md-12 letra-media">
                 <hr>
-                <div class="form-check colo11">
+                <div class="form-check color11">
                   <input type="radio" class="form-check-input" id="radio6" name="radio" value="radio6">Input Hidden
                 </div>
-                <div class="form-check colo11">
+                <div class="form-check color11">
                   <input type="radio" class="form-check-input" id="radio7" name="radio" value="radio7">Select Option
                 </div>
-                <div class="form-check colo11">
+                <div class="form-check color11">
                   <input type="radio" class="form-check-input" id="radio8" name="radio" value="radio8">Radio Option
                 </div>
                 <hr>
@@ -209,7 +209,6 @@
       </script>
     </body>
     </html>
- 
   <?php   
   //}
   ?>
