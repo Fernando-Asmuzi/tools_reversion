@@ -6,6 +6,7 @@ $base = $_POST['base'];
 $tabla = $_POST['tabla'];
 $pass = $_POST['pass'];
 $proyecto0 = $raiz0 . '/' . $proyecto;
+$config = $proyecto . '/config';
 
 $temporal = fopen("tmp.txt", "w");
 
@@ -41,8 +42,10 @@ function recursiveCopy($source, $destination)
 
 if (!file_exists($proyecto0)) {
     mkdir($proyecto0, 0777, true);
+    
     recursiveCopy(__DIR__ . "/assets", $proyecto0 . '/assets');
 
+    
     // Genero archivo de conexion
     $devu = '';
     $devu .= "// CONEXION // \r";
@@ -59,7 +62,7 @@ if (!file_exists($proyecto0)) {
     $devu .= '} catch(PDOException $e){' . "\r";
     $devu .= 'die("ERROR: No se pudo conectar. " . $e->getMessage());' . "\r";
     $devu .= "}" . "\r";
-    $archivo = fopen($proyecto0 . "/conexion.php", "w+b");
+    $archivo = fopen($proyecto0 ."/conexion.php", "w+b");
     fwrite($archivo, '<?php' . "\r");
     fwrite($archivo, $devu);
     fwrite($archivo, '?>' . "\r");
