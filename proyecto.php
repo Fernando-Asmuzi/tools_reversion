@@ -41,25 +41,52 @@ function recursiveCopy($source, $destination)
 
 if (!file_exists($proyecto0)) {
     mkdir($proyecto0, 0777, true);
+    
     recursiveCopy(__DIR__ . "/assets", $proyecto0 . '/assets');
+    $config = $proyecto0 . '/config';
 
+    mkdir($config, 0777, true);
+    
     // Genero archivo de conexion
     $devu = '';
     $devu .= "// CONEXION // \r";
     $devu .= "// Nombre del archivo ( conexion.php ) \r";
     $devu .= "// Archivo de Conexion a la Base " . ucfirst($base) . " \r";
-    $devu .= "define('DB_SERVER', 'localhost');\r";
-    $devu .= "define('DB_USERNAME', 'root');\r";
-    $devu .= "define('DB_PASSWORD', '" . $pass . "');\r";
-    $devu .= "define('DB_NAME', '" . strtolower($base) . "');\r";
-    $devu .= "try{\r";
-    $devu .= '$conexion = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);' . "\r";
-    $devu .= '$conexion->exec("set names utf8");' . "\r";
-    $devu .= '$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);' . "\r";
-    $devu .= '} catch(PDOException $e){' . "\r";
-    $devu .= 'die("ERROR: No se pudo conectar. " . $e->getMessage());' . "\r";
-    $devu .= "}" . "\r";
-    $archivo = fopen($proyecto0 . "/conexion.php", "w+b");
+    
+    $devu .= 'class Conexion extends PDO' . "\r";
+    $devu .= '{' . "\r";
+    $devu .= "\r";
+    $devu .= 'private $hostBd = "localhost";' . "\r";
+    $devu .= 'private $nombreBd = "'. strtolower($base) .'";' . "\r";
+    $devu .= 'private $usuarioBd = "root";' . "\r";
+    $devu .= 'private $passwordBd = "'. $pass .'";' . "\r";
+    $devu .= "\r";
+    $devu .= 'public function __construct()' . "\r";
+    $devu .= '{' . "\r";
+    $devu .= 'try{' . "\r";
+    $devu .= 'parent::__construct(' . "'mysql:host='" . '. $this->hostBd .' . "';dbname=' ." . '$this->nombreBd .' . "';charset=utf8'" . ', $this->usuarioBd, $this->passwordBd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));' . "\r";
+    $devu .= '}catch(PDOException $e){' . "\r";
+    $devu .= 'echo' . "'Error: ' ." . '$e->getMessage();' . "\r";
+    $devu .= 'exit;' . "\r";
+    $devu .= '}' . "\r";
+    $devu .= '}' . "\r";
+    $devu .= '}' . "\r";
+    $devu .= "\r";
+    
+    
+    // $devu .= "define('DB_SERVER', 'localhost');\r";
+    // $devu .= "define('DB_USERNAME', 'root');\r";
+    // $devu .= "define('DB_PASSWORD', '" . $pass . "');\r";
+    // $devu .= "define('DB_NAME', '" . strtolower($base) . "');\r";
+    // $devu .= "try{\r";
+    // $devu .= '$conexion = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_NAME, DB_USERNAME, DB_PASSWORD);' . "\r";
+    // $devu .= '$conexion->exec("set names utf8");' . "\r";
+    // $devu .= '$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);' . "\r";
+    // $devu .= '} catch(PDOException $e){' . "\r";
+    // $devu .= 'die("ERROR: No se pudo conectar. " . $e->getMessage());' . "\r";
+    // $devu .= "}" . "\r";
+    
+    $archivo = fopen($config ."/conexion.php", "w+b");
     fwrite($archivo, '<?php' . "\r");
     fwrite($archivo, $devu);
     fwrite($archivo, '?>' . "\r");

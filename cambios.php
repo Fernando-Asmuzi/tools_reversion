@@ -1,4 +1,7 @@
 <?php
+
+use PhpMyAdmin\Header;
+
 session_start();
 
 if(!isset($_SESSION['id'])){
@@ -10,20 +13,40 @@ if(!isset($_SESSION['id'])){
     include('conexion/conexion.php');
     $ruta = $_SERVER['DOCUMENT_ROOT'];
 
+    //---------------------------- Carga de los cambios ---------------------------//
+    $consulta = "SELECT * FROM cambios";
+    $resultado = $conexion->query($consulta);
+    $registros = $resultado->rowCount();
+    $resultado->execute();
+    if($registros != 0){
+        $resul_array = [];
+        while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+            array_push($resul_array, $row);
+        }
+        echo json_encode($resul_array);
+        exit();
+    }
+
     //---------------------------- Añadir nuevo cambio ---------------------------//
     if (isset($_POST['nuevoCambio'])) {
         $title = $_POST['titulo'];
         $descrip = $_POST['descripcion'];
         $priority = $_POST['prioridad'];
-        $user = $_POST['usuario']; 
-        $query = $conexion->prepare("INSERT INTO cambios(titulo,descripcion,prioridad,realizado,usuario_id) VALUES (:title,:descrip,:priority,0,:user)");
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $user = $_POST['usuario'];
+        $input=$_POST; 
+
+        $query = $conexion->prepare("INSERT INTO cambios (titulo,descripcion,prioridad,realizado,usuario_id) VALUES (:title,:descrip,:priority,0,:user)");
+        $query->bindParam("title", $title, PDO::PARAM_STR);
+        $query->bindParam("descrip", $descrip, PDO::PARAM_STR);
+        $query->bindParam("priority", $priority, PDO::PARAM_INT);
+        $query->bindParam("user", $user, PDO::PARAM_STR);
+        $result=$query->execute();
+        
         if (!$result) {
             echo '<script language="javascript">alert("Algo salió mal, intente nuevamente");</script>';
         } else {
             echo '<script language="javascript">alert("Cambio registrado exitosamente");</script>';
-            
+            Header("Location: cambios.php");
         }
     }
     ?>

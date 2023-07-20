@@ -1,6 +1,5 @@
 <?php
 
-
 $file_handle = fopen('tmp.txt', 'r');
 $contents = fread($file_handle, filesize('tmp.txt'));
 fclose($file_handle);
@@ -22,7 +21,7 @@ if (!empty($proyecto)){
     //----------  Definición de parámetros de conexión ----------//
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', 'admin123');
+    define('DB_PASSWORD', 'Admin123');
     define('DB_NAME', $base);
 
     try {
@@ -34,6 +33,7 @@ if (!empty($proyecto)){
     }
 
     //----- Consulta de la Estructura de la Tabla pasada como Paramentro -----//
+    //SELECT COLUMN_NAME AS columna, COLUMN_KEY AS CLAVE, ORDINAL_POSITION AS posicion, DATA_TYPE AS tipo FROM information_schema.columns WHERE table_schema = 'mspj' AND table_name = 'maestro' ORDER BY ORDINAL_POSITION
     $consulta = "SELECT COLUMN_NAME AS columna, ORDINAL_POSITION AS posicion, DATA_TYPE AS tipo FROM information_schema.columns WHERE table_schema = '" . $base . "' AND table_name = '" . $tabla . "' ORDER BY ORDINAL_POSITION";
     $resultado = $conexion->query($consulta);
     $campos = $resultado->rowCount();
@@ -93,7 +93,6 @@ if (!empty($proyecto)){
         // Muestro el codigo
         echo $devu;
     }
-
     //--------------- Generación de ABM para la tabla seleccionada ---------------//
     //----- Creación Archivo para Insert -----//
     if ($_POST['radio'] == 'radio2') {
@@ -103,11 +102,11 @@ if (!empty($proyecto)){
         $devu .= "<!-- Rutina de alta de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card -->\r";
         $devu .=
-        "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='agregar'>
+        "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo2' id='agregar'>
 
             <div class='row text-center'>
                 <div class='col-12'>
-                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo1' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
+                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo19' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ALTA DE " . strtoupper($tabla) . "</span>
                 </div>
             </div> \r\r";
             $devu .= "<!-- Comienzo del formulario para insert tabla " . ucfirst($tabla) . " -->\r";
@@ -119,7 +118,7 @@ if (!empty($proyecto)){
                 $devu .= "<div class='row text-center'>\r";
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
-                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color2'></i></span>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color12'></i></span>\r";
                 if ($row['tipo'] == 'int') {
                     $devu .= "<input type='number' id='" . $row['columna'] . "_i' name ='" . $row['columna'] . "_i' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
                 }elseif ($row['tipo'] == 'varchar') {
@@ -154,7 +153,7 @@ if (!empty($proyecto)){
                 "<!-- Boton Guardar -->
                 <div class='row'>
                     <div class='col-12 derecha'>
-                        <button type='submit' id='guardar_i' class='btn fondo2 color7 letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
+                        <button type='submit' id='guardar_i' class='btn boton-guardar letra-normal'><i class='bi bi-plus-circle'></i>&nbsp;Guardar</button>
                     </div>
                 </div>
                 </form>
@@ -178,10 +177,10 @@ if (!empty($proyecto)){
         $devu .= "<!-- Nombre del archivo ( edit.php ) -->\r";
         $devu .= "<!-- Rutina de modificacion de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card -->\r";
-        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='modificar'>
+        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo2' id='modificar'>
             <div class='row text-center'>
                 <div class='col-12'>
-                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
+                    <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo20' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;MODIFICACION DE " . strtoupper($tabla) . "</span>
                 </div>
             </div>
             <!-- Comienzo del Formulario para Update " . ucfirst($tabla) . " -->
@@ -194,7 +193,7 @@ if (!empty($proyecto)){
                 $devu .= "<div class='row text-center'>\r";
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
-                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color5'></i></span>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color13'></i></span>\r";
                 if ($row['tipo'] == 'int'){
                     $devu .= "<input type='number' id='" . $row['columna'] . "_u' name ='" . $row['columna'] . "_u' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
                 } elseif ($row['tipo'] == 'varchar') {
@@ -230,7 +229,7 @@ if (!empty($proyecto)){
             <div class='row'>
             <div class='col-12 derecha'>
             <button type='reset' id='cancelar_u' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-            <button type='submit' id='guardar_u' class='btn boton3 color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
+            <button type='submit' id='guardar_u' class='btn boton-modificar color7 letra-normal'><i class='bi bi-pencil-square'></i> Modificar</button>
             </div>
             </div>
             </form>
@@ -253,11 +252,11 @@ if (!empty($proyecto)){
             $devu .= "<!-- Nombre del archivo ( delete.php ) -->\r";
             $devu .= "<!-- Rutina de borrar de la tabla " . ucfirst($tabla) . " -->\r";
             $devu .= "<!-- Comienzo del Card -->\r";
-            $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='eliminar'>\r";
+            $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo2' id='eliminar'>\r";
             $devu .= "
             <div class='row text-center'>
             <div class='col-12'>
-            <span class='input-group-text letra-normal negrita alto1 mb-2 text-white boton2' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
+            <span class='input-group-text letra-normal negrita alto1 mb-2 text-white fondo3' id='inputGroup-sizing-sm'><i class='bi bi-record-circle'></i>&nbsp;ELIMINAR " . strtoupper($tabla) . "</span>
             </div>
             </div>\r";
             $devu .= "
@@ -270,7 +269,7 @@ if (!empty($proyecto)){
                 $devu .= "<div class='row text-center'>\r";
                 $devu .= "<div class='col-md-12'>\r";
                 $devu .= "<div class='input-group input-group mb-2'>\r";
-                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color4'></i></span>\r";
+                $devu .= "<span class='input-group-text' id='inputGroup-sizing-sm'><i title='" . ucwords($row['columna']) . "' class='bi bi-record-fill color3'></i></span>\r";
                 if ($row['tipo'] == 'int') {
                     $devu .= "<input type='number' id='" . $row['columna'] . "_d' name ='" . $row['columna'] . "_d' class='form-control letra-normal' placeholder='" . ucwords($row['columna']) . "' value='' />\r";
                 } elseif ($row['tipo'] == 'varchar') {
@@ -306,7 +305,7 @@ if (!empty($proyecto)){
             <div class='row'>
             <div class='col-12 derecha'>
             <button  type='reset' id='cancelar_d' class='btn btn-secondary letra-normal'><i class='bi bi-x-circle'></i> Cancelar</button>
-            <button type='submit' id='guardar_d' class='btn boton2 color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
+            <button type='submit' id='guardar_d' class='btn boton-eliminar color7 letra-normal'><i class='bi bi-trash'></i> Eliminar</button>
             </div>
             </div>
             </form>
@@ -330,12 +329,12 @@ if (!empty($proyecto)){
         $devu .= "<!-- Nombre del archivo ( search.php ) -->\r";
         $devu .= "<!-- Rutina de buscar de la tabla " . ucfirst($tabla) . " -->\r";
         $devu .= "<!-- Comienzo del Card del DataTable -->\r";
-        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo4' id='search'>\r\r";
+        $devu .= "<div class='card pt-2 pb-2 ps-2 pe-2 paracard shadow-sm fondo2' id='search'>\r\r";
         $devu .=
         "<!-- Titulo Data Table-->
         <div class='row text-center'>
             <div class='col-sm-7 col-md-9'>
-                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 text-white fondo1' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
+                <span class='input-group-text letra-normal negrita w-100 alto1 mb-2 fondo6' style='float: left;' id='inputGroup-sizing-sm'><i class='bi bi-search'></i>&nbsp;BUSCAR REGISTROS</span>
             </div>
             <div class='col-sm-5 mb-2 col-md-3'>
                 <form class='d-flex w-100' method='POST' id='formbuscar' action='" . strtolower($tabla) . ".php' style='float: right;' >
@@ -348,7 +347,7 @@ if (!empty($proyecto)){
         <!-- Comienzo de la Grid Datatable -->
         <table class='table table-bordered table-hover table-condensed letra-normal' id='" . strtolower($tabla) . "'>
             <thead>
-                <tr class='fondo2 color7'> \r";
+                <tr class='fondo16 negrita'> \r";
                     //------------------ Generador de campos para cabecera de la tabla -------------------------//
                     for ($counter = 0; $counter < $camposSearch; $counter++) {
                         $row = $resultado->fetch(PDO::FETCH_ASSOC); 
@@ -369,8 +368,8 @@ if (!empty($proyecto)){
         </table>
         <!-- Fin de la Tabla Data Table -->
         <!-- Cartel de Anuncios ó Spinner -->
-        <div class='color2 negrita letra-media' id='cartelito' style='display: block;'>Ingrese su busqueda...</div>
-        <div class='color2 negrita letra-media' id='alerta' style='display: none;'></div>
+        <div class='negrita letra-media' id='cartelito' style='display: block;'>Ingrese su busqueda...</div>
+        <div class='negrita letra-media' id='alerta' style='display: none;'></div>
         <!-- Fin del Card del Data Table-->
         </div>\r";
 
@@ -389,7 +388,8 @@ if (!empty($proyecto)){
         $devu .= "// CRUD // \r";
         $devu .= "// Nombre del archivo ( " . strtolower($tabla) . ".php ) \r";
         $devu .= "// Rutina de CRUD y Select para Buscar y Select Option \r\r";
-        $devu .= "include '../conexion.php';\r";
+        $devu .= "include '../config/conexion.php';\r";
+        $devu .= '$conexion = new Conexion();' . "\r";
         $devu .= '$requerimiento = $_POST["requerimiento"];' . "\r\r";
         $devu .= "// -------------------------------------------------------------------------------- //\r";
         $devu .= "// Codigo que Genera la Rutina para Select para Buscar y cargar la tablita\r";
@@ -546,7 +546,7 @@ if (!empty($proyecto)){
         $devu .= 'if($registros > 0){' . "\r";
         $devu .= 'echo ' . "'<option value=" . '"0">' . "</option>';" . "\r";
         $devu .= 'while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {' . "\r";
-        $devu .= 'echo ' . "'<option value=" . '"' . "'" . '.$' . 'row["id"]' . ".'" . '">' . "'" . '.$' . 'row['.'$campo_option'.'].' . "'</option>'" . ";\r";
+        $devu .= 'echo ' . "'<option value=" . '"' . "'" . '.$' . 'row[$campo_option]' . ".'" . '">' . "'" . '.$' . 'row['.'$campo_option'.'].' . "'</option>'" . ";\r";
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
         $devu .= '}' . "\r";
@@ -663,7 +663,7 @@ if (!empty($proyecto)){
         $devu .= '// Si estan vacios se muestra la tostada de alerta y cambia el color de la etiqueta' . "\r";
         // $array_campos = [];
         for ($counter = 1; $counter < count($array_campos); $counter++) {
-            $devu .= "if ($('#" . $array_campos[$counter] . "_i').val() == null ||  $('#" . $array_campos[$counter] . "_i').val() == undefined  || $('#" . $array_campos[$counter] . "_i').val() == '') {" . "\r";
+            $devu .= "if ($('#" . $array_campos[$counter] . "_i').val() == '') {" . "\r";
             $devu .= "$('#" . $array_campos[$counter] . "_i').css(" . '"background-color", "#F9EBEA");' . "\r";
             $devu .= 'a = 1;' . "\r";
             $devu .= '}' . "\r";

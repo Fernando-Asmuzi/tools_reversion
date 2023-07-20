@@ -1,67 +1,58 @@
+/* ---------------------------------------------- */
+/* Colores para Texto */
+.color1 {color: white;}
+.color2 {color: #F6F6F6;}
+.color3 {color: #F3525A;}
+.color4 {color: #1c3157;}
+.color5 {color: #061022;}
+.color6 {color: #eeeff15d;}
+.color7 {color: #262627b9;}
+.color8 {color: #d0d3d3;}
+.color9 {color: #d3d5d5;}
+.color10 {color: #f4bfc2;}
+.color11 {color: #97afd8;}
+.color12 {color: #5499C7;}
+.color13 {color: #54ee94;}
 
-/* Colores usados en la pagina*/
-.fondo1 {background-color: #F3525A;}
-.fondo2 {background-color: #1c3157;}
-.fondo3 {background-color: #0c090e2c;}
-.fondo4 {background-color: #ebf1f0;}
-.fondo5 {background-color: #e69890;}
+/* ---------------------------------------------- */
+/* Colores de Botones */
+.boton-guardar {background-color: #5499C7;}
+.boton-modificar {background-color: #54ee94;}
+.boton-eliminar {background-color: #F3525A;}
+.boton-cancelar {background-color: #eeeff15d;}
 
+/* ---------------------------------------------- */
+/* Colores para Fondos */
+.fondo1 {background-color: white;}
+.fondo2 {background-color: #F6F6F6;}
+.fondo3 {background-color: #F3525A;}
+.fondo4 {background-color: #1c3157;}
+.fondo5 {background-color: #061022;}
+.fondo6 {background-color: #eeeff15d;}
+.fondo7 {background-color: #26262787;}
+.fondo8 {background-color: #d0d3d3;}
+.fondo9 {background-color: #d3d5d5;}
+.fondo10 {background-color: #F9EBEA;}
+.fondo11 {background-color: #4862f4;}
+.fondo12 {background-color: #eaebec;}
+.fondo13 {background-color: #EAF2F8;}
+.fondo14 {background-color: #97afd8;}
+.fondo15 {background-color: #EAFAF1;}
+.fondo16 {background-color: #ABEBC6;}
+.fondo17 {background-color: rgba(171, 235, 198, 145);}
+.fondo18 {background-color: #f5e4e5;}
+.fondo19 {background-color: #5499C7;}
+.fondo20 {background-color: #54ee94;}
 
-.color1 {color: #4c545c;}
-.color2 {color: #F3525A;}
-.color3 {color: white;}
-.color4 {color: #EC7063;}
-.color5 {color: #48C9B0;}
-.color6 {color: #0c090e2c;}
-.color7 {color: white;}
-.color9 {color: #1c3157;}
-.color10 {color: #D35400;}
-
-.boton11 {background-color: #D35400 ;}
-.boton12 {background-color: #1c3157;}
-
-
-
-.fondo-rojo {background-color: #e69890;}
-.fondo-verde {background-color: #a9e0d988;}
-.fondo-azul {background-color: #A9CCE3;}
-
-
-
-/* Formulario de login */
-.login-form{
-  
+/* ---------------------------------------------- */
+/* Fondo de las Tostadas */
+.fondo-ok {background-color: #f59fa4;}
+.fondo-error {background-color: #677ca1;}
+.fondo-exclamacion {background-color: #26ccb688;}
+/* Letra a 9px */
+.letra-muychica{
+  font-size: 9px;
 }
-
-/* Sombra */
-.caja1{
-  box-shadow: 0px 0px 2px 1px grey;
-}
-/* Color de fondo de toda la pagina */
-
-body {
-  background-color: #f7f7f5;
-}
-
-.boton1 {background-color: #F3525A;}
-.boton2 {background-color: #EC7063 ;}
-.boton3 {background-color: #48C9B0;}
-
-
-/*//////////////////////////////////////////////////////*/
-
-/*Sombras*/
-
-.caja1{
-  box-shadow: 0px 0px 2px 1px grey;
-}
-
-
-
-/*//////////////////////////////////////////////////////*/
-
-/* Tamaño de fuentes*/
-
 /* Letra a 10px */
 .letra-chica{
   font-size: 10px;
@@ -78,59 +69,30 @@ body {
 .letra-grande{
   font-size: 16px;
 }
+/* Letra a 18px */
+.letra-muygrande{
+  font-size: 18px;
+}
+/* Letra en Negrita */
+.negrita{
+  font-weight: bold;
+}
+/* Letra en Normal */
+.normal{
+font-weight: normal;
+}
 
-/*//////////////////////////////////////////////////////*/
+.contorno {
+  /* -webkit-text-stroke-color: #1c3157;
+  -webkit-text-stroke-width: 1px; */
+/* shorthand */
+  -webkit-text-stroke: 2px #1c3157;
+/* color del texto */
+  -webkit-text-fill-color: #F6F6F6;
+}
 
-/* Alto */
-
-.alto1{
-  height: 40px;
-}
-.alto2{
-  height: 20px;
-}
-.alto3{
-  height: 60px;
-}
-.alto4{
-  height: 38px;
-}
-/*//////////////////////////////////////////////////////*/
-
-/*Ancho*/
-
-.ancho5{
-  width: 5% ;
-}
-.ancho10{
-  width: 10% ;
-}
-.ancho15{
-  width: 15% ;
-}
-.ancho20{
-  width: 20% ;
-}
-.ancho25{
-  width: 25% ;
-}
-.ancho30{
-  width: 30% ;
-}
-.ancho40{
-  width: 40% ;
-}
-.ancho50{
-  width: 50% ;
-}
-.ancho90{
-  width: 90% ;
-}
-/*//////////////////////////////////////////////////////*/
-
-/*Alineacion del texto*/
-
-/* Alinear texto a la centro */
+/* ---------------------------------------------- */
+/* Alinear texto al centro */
 .centro{
   text-align: center;
 }
@@ -142,35 +104,231 @@ body {
 .izquierda{
   text-align: left;
 }
-/*//////////////////////////////////////////////////////*/
+/* Centrar DIV */
+.centrardiv {
+  justify-content: right;
+  align-items: right;
+  text-align: right;
+}
+/* Tamaño de la letra del placeholder */
+::placeholder {
+  font-size: 14px;
+}
 
-/*Tipos de fuentes*/
+/* ---------------------------------------------- */
+/* Cambiar el color de fondo del NavBar */
+nav.navbar {
+  background-color: #45B39D;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #F3525A;
+}
 
-/* Letra en Negrita */
-.negrita{
+/* ---------------------------------------------- */
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---------------------------------------------- */
+/* Tablas */
+.tabla-responsive { 
+  height: 450px;
+  overflow: scroll;
+}
+
+/* ---------------------------------------------- */
+/* Header y Footer */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 5px 5px;
+  /* background-color: #333;
+  font-size: 20px;
+  color: #FFFFFF; */
+}
+footer {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height: 30px;
+  width:100%;
+  background:#c58989;
+}
+
+/* ---------------------------------------------- */
+/* Centrado Obsoluto */
+.centrado_absoluto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+
+  
+  /* .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } */
+
+}
+
+/* ---------------------------------------------- */
+/* Opacar Imagen 50% */
+.opacado{
+  filter: brightness(50%);
+}
+
+/* ---------------------------------------------- */
+/* Poner Texto Sobre Imagen */
+#padre {
+  position: relative;    /* para poder posicionar el texto de forma absoluta */
+  display: inline-block; /* para que solo ocupe el ancho de la imagen */
+}
+.letras {
+  position: absolute;    /* posición absolute con respecto al padre */
+  bottom: 0;             /* posicionada en la esquina inferior derecha */
+  /* right: 1rem; */
+  left: 1rem;
+}
+
+/* ---------------------------------------------- */
+/* Sacar Subrayado a Link Etiqueta <a> */
+a:link {
+  text-decoration: none;
+}
+
+/* ---------------------------------------------- */
+/* Hover para Card */
+.sobre:hover {
+  background: #dcd9d98a;
   font-weight: bold;
 }
-/* Letra en Normal */
-.normal{
-font-weight: normal;
+
+/* ---------------------------------------------- */
+/* Hover para Card */
+.sombra {
+  box-shadow: 5px 5px 10px -2px rgba(0,0,0,0.54);
 }
-/*//////////////////////////////////////////////////////*/
 
-/*Responsi*/
+/* input[type='date']:after {
+  content: attr(placeholder)
+} */
 
-.responsive {
-  width: 100%;
-  height: auto;
+/* ---------------------------------------------- */
+/* MediaQuery */
+@media screen and (min-width: 410px){
+  .letra{
+    font-size: 20px;
+  }
+  /* .titulo{
+  font-size:18px;
+  } */
 }
-/*<<<<<<< HEAD*/
-/*//////////////////////////////////////////////////////*/
 
-.borde-derecho { border-right: 1px solid rgb(172, 169, 169); }
+table,td {
+	border: 1px solid grey;
+}
 
-.paracard{
-  width: 99% ;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+/* ---------------------------------------------- */
+/* Anchos */
+.ancho3 {
+  width: 3%;
+}
+.ancho5 {
+  width: 5%;
+}
+.ancho6 {
+  width: 6%;
+}
+.ancho7 {
+  width: 7%;
+}
+.ancho9 {
+  width: 9%;
+}
+.ancho10 {
+  width: 10%;
+}
+.ancho12 {
+  width: 12%;
+}
+.ancho15 {
+  width: 15%;
+}
+.ancho16 {
+  width: 16%;
+}
+.ancho20 {
+  width: 20%;
+}
+.ancho30 {
+  width: 30%;
+}
+.ancho40 {
+  width: 40%;
+}
+.ancho200p {
+  width: 200px;
+}
+
+/* ---------------------------------------------- */
+/* Altos */
+.alto40 {
+  height: 20px;
+}
+.alto20 {
+  height: 10px;
+}
+
+.pad-acord {
+  padding-left: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+}
+/* ---------------------------------------------- */
+
+.cabecera { 
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fbf9f9;
 }

@@ -2,7 +2,7 @@
 
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', 'admin123');
+    define('DB_PASSWORD', 'Admin123');
     define('DB_NAME', 'tools_bd');
     
     try {
